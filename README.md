@@ -15,4 +15,4 @@
 Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
 
 Удачи!
-* [Ссылка на сайт в готовом виде] (https://kitybot.github.io/mesto-project/)
+* [Ссылка на сайт в готовом виде](https://kitybot.github.io/mesto-project/)
