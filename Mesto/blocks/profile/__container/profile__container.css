@@ -1,0 +1,19 @@
+.profile__container {
+  display: grid;
+  grid-template-columns: 27% 56% 17%;
+  grid-template-rows: 60% 40%;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__container {
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 2fr 1fr .5fr;
+    justify-items: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile__container {
+    margin-left: 17%;
+  }
+}

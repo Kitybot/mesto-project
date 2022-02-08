@@ -1,0 +1,21 @@
+.Element {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+@media screen and (max-width: 768px) {
+  .Element {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Element {
+    justify-content: center;
+  }
+}
