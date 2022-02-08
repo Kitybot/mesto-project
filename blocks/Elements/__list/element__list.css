@@ -1,4 +1,4 @@
-.Element {
+.element__list {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -8,14 +8,14 @@
 }
 
 @media screen and (max-width: 768px) {
-  .Element {
+  .element__list {
     margin-left: 2%;
     margin-right: 2%;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .Element {
+  .element__list {
     justify-content: center;
   }
 }
