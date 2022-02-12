@@ -8,7 +8,7 @@
     <title>Проект Место</title>
 </head>
 
-<body class="page">
+<body class="page">  
     <header class="header">
         <img class="header__logo" src="./image/logo.png" alt="картинка грузится">
     </header>
@@ -22,48 +22,48 @@
             </div>
             <button class="profile__add-button" type="button"></button>
         </section>
-        <section class="Elements">
+        <section class="element">
             <ul class="element__list">
                 <li class="element__item">
                     <img class="element__image" src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Замок">
                     <div class="element__container">
                         <h2 class="element__title">Карачаевск</h2>
-                        <button class="element__button" type="button"></button>
+                        <button class="element__button-like" type="button"></button>
                     </div>
                 </li>
                 <li class="element__item">
                     <img class="element__image" src="./image/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус">
                     <div class="element__container">
                         <h2 class="element__title">Эльбрус</h2>
-                        <button class="element__button" type="button"></button>
+                        <button class="element__button-like" type="button"></button>
                     </div>
                 </li>
                 <li class="element__item">
                     <img class="element__image" src="./image/kirill-pershin-1556355-unsplash.png" alt="Думбай гора">
                     <div class="element__container">
                         <h2 class="element__title">Думбай</h2>
-                        <button class="element__button" type="button"></button>
+                        <button class="element__button-like" type="button"></button>
                     </div>
                 </li>
                 <li class="element__item">
-                    <img class="element__image" src="./image/scale_1200.png" alt="Вулкан">
+                    <img class="element__image" src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
                     <div class="element__container">
-                        <h2 class="element__title">Вулкан Креницына</h2>
-                        <button class="element__button" type="button"></button>
+                        <h2 class="element__title">Карачаевск</h2>
+                        <button class="element__button-like" type="button"></button>
                     </div>
                 </li>
                 <li class="element__item">
-                    <img class="element__image" src="./image/scale_1200-124.jpg" alt="Байкал">
+                    <img class="element__image" src="./image/kirill-pershin-1404681-unsplash.png" alt="Эльбрус">
                     <div class="element__container">
-                        <h2 class="element__title">Озеро байкал</h2>
-                        <button class="element__button" type="button"></button>
+                        <h2 class="element__title">Эльбрус</h2>
+                        <button class="element__button-like" type="button"></button>
                     </div>
                 </li>
                 <li class="element__item">
-                    <img class="element__image" src="./image/c95d51fe070e65ddc398773bed7d044d.jpg" alt="Озеро ситр">
+                    <img class="element__image" src="./image/kirill-pershin-1556355-unsplash.png" alt="Думбай">
                     <div class="element__container">
-                        <h2 class="element__title">Озеро ситр Алтай</h2>
-                        <button class="element__button" type="button"></button>
+                        <h2 class="element__title">Думбай</h2>
+                        <button class="element__button-like" type="button"></button>
                     </div>
                 </li>
             </ul>
@@ -72,18 +72,17 @@
     <footer class="footer">
         <p class="footer__paragraph">© 2020 Mesto Russia</p>
     </footer>
-    <div class="form">
-        <div class="form__container">
+    <div class="popup">
+        <div class="popup__container">
             <button class="form__close" type="button"></button>
-            <h2 class="form__title">Редактировать профиль</h2>
-            <form class="form__form" name="profile">
-                <input class="form__item" type="text" name="name" placeholder="Жак-Ив Кусто">
-                <input class="form__item" type="text" name="about" placeholder="Исследователь океана">
-                <button class="form__button" type="button">Сохранить</button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form" name="profile">
+                <input class="popup__item" type="text" name="name" placeholder="Жак-Ив Кусто">
+                <input class="popup__item" type="text" name="about" placeholder="Исследователь океана">
+                <button class="popup__button" type="submit">Сохранить</button>
             </form>
         </div>
-
-    </div>
+        </div>
 </body>
 
 </html>

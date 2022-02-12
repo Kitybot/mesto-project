@@ -1,7 +1,7 @@
-.element__button:hover {
+.element__button-like:hover {
     opacity: .5;
 }
-.element__button {
+.element__button-like {
     background-image: url(../../../image/Vector2.png);
     background-color: #FFFFFF;
     background-position: center;
@@ -13,7 +13,7 @@
     transition: linear .5s;
     cursor: pointer;
 }
-.element__button:active {
+.element__button-like:active {
     background-image: url(../../../image/Union.png);
     opacity: 1;
     transition: none;

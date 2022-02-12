@@ -1,7 +1,7 @@
 .popup__button:hover {
-    opacity: .6;
-  }
-.form__button {
+  opacity: .6;
+}
+.popup__button {
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
