@@ -3,7 +3,7 @@
     url(./Inter-Black.woff2) format("woff2"),
     url(./Inter-Black.woff) format("woff");
     font-family: "Inter";
-    font-weight: bolder;
+    font-weight: bold;
 }
 @font-face {
     src:
@@ -17,5 +17,5 @@
     url(./Inter-Medium.woff2) format("woff2"),
     url(./Inter-Medium.woff) format("woff");
     font-family: "Inter";
-    font-weight: bold;
+    font-weight: bolder;
 }
