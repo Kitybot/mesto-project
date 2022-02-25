@@ -8,7 +8,7 @@ const nameProfile = document.getElementById('name');
 const profProfile = document.getElementById('about');
 const profileInput = document.querySelector('.profile__title');
 const profInput = document.querySelector('.profile__subtitle');
-const editButton = content.querySelector('.profile__button_edit');
+const editButton = content.querySelector('.profile__edit-button');
 const addButton = content.querySelector('.profile__button_add');
 const closeButtonProfile = document.querySelector('#close_Profile');
 const cardsContainer = content.querySelector('.cards__container');
@@ -103,7 +103,7 @@ cardForm.addEventListener('click', function (evt) {
 });
 
 PicterCards.forEach(card => {
-  addCard(cardsContainer, createCard(card.name, card.link));
+  addCard(card, createCard(card.name, card.link));
 });
 
 const cardImage = document.querySelectorAll('.card__pic');
