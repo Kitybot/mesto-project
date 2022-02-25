@@ -8,7 +8,7 @@
     <title>Проект Место</title>
 </head>
 
-<body class="page">  
+<body class="page">
     <header class="header">
         <img class="header__logo" src="./image/logo.png" alt="картинка грузится">
     </header>
@@ -24,48 +24,6 @@
         </section>
         <section class="element">
             <ul class="element__list">
-                <li class="element__item">
-                    <img class="element__image" src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Замок">
-                    <div class="element__container">
-                        <h2 class="element__title">Карачаевск</h2>
-                        <button class="element__button-like" type="button"></button>
-                    </div>
-                </li>
-                <li class="element__item">
-                    <img class="element__image" src="./image/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус">
-                    <div class="element__container">
-                        <h2 class="element__title">Эльбрус</h2>
-                        <button class="element__button-like" type="button"></button>
-                    </div>
-                </li>
-                <li class="element__item">
-                    <img class="element__image" src="./image/kirill-pershin-1556355-unsplash.png" alt="Думбай гора">
-                    <div class="element__container">
-                        <h2 class="element__title">Думбай</h2>
-                        <button class="element__button-like" type="button"></button>
-                    </div>
-                </li>
-                <li class="element__item">
-                    <img class="element__image" src="./image/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-                    <div class="element__container">
-                        <h2 class="element__title">Карачаевск</h2>
-                        <button class="element__button-like" type="button"></button>
-                    </div>
-                </li>
-                <li class="element__item">
-                    <img class="element__image" src="./image/kirill-pershin-1404681-unsplash.png" alt="Эльбрус">
-                    <div class="element__container">
-                        <h2 class="element__title">Эльбрус</h2>
-                        <button class="element__button-like" type="button"></button>
-                    </div>
-                </li>
-                <li class="element__item">
-                    <img class="element__image" src="./image/kirill-pershin-1556355-unsplash.png" alt="Думбай">
-                    <div class="element__container">
-                        <h2 class="element__title">Думбай</h2>
-                        <button class="element__button-like" type="button"></button>
-                    </div>
-                </li>
             </ul>
         </section>
     </main>
@@ -82,7 +40,37 @@
                 <button class="popup__button" type="submit">Сохранить</button>
             </form>
         </div>
+    </div>
+    <div class="popup popup__card">
+        <div class="popup__container">
+            <button class="popup__button popup__button_close" id="close_popupCard" type="button"></button>
+            <h2 class="popup__title">Новое Место</h2>
+            <form class="popup__form" id="card" name="pic">
+                <input class="popup__item" type="text" id="name_card" name="name" placeholder="Название">
+                <input class="popup__item" type="text" id="link_card" name="link" placeholder="Ссылка на картинку">
+                <button class="popup__button popup__button__save" type="submit">Создать</button>
+            </form>
         </div>
+    </div>
+    <div class="popup popup__picture">
+        <div class="popup__pic-container">
+            <button class="popup__button popup__button_close" id="close_Pic" type="button"></button>
+            <img class="popup__image">
+            <h2 class="popup__heading"></h2>
+        </div>
+    </div>
+    <template id="cards__template">
+        <div class="card">
+            <button class="card__remove" type="button"></button>
+            <img class="card__pic">
+            <div class="card__description">
+                <h2 class="card__title"></h2>
+                <button class="card__button" type="button"></button>
+            </div>
+        </div>
+    </template>
+    </div>
+    <script src="./script/script.js"></script>
 </body>
 
 </html>
