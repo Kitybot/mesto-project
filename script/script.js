@@ -9,9 +9,9 @@ const profProfile = document.getElementById('about');
 const profileInput = document.querySelector('.profile__title');
 const profInput = document.querySelector('.profile__subtitle');
 const editButton = content.querySelector('.profile__edit-button');
-const addButton = content.querySelector('.profile__button_add');
+const addButton = content.querySelector('.profile__add-button');
 const closeButtonProfile = document.querySelector('#close_Profile');
-const cardsContainer = content.querySelector('.cards__container');
+const ElementContainer = content.querySelector('.element__container');
 const cardTemplate = document.querySelector('#cards__template').content;
 const cardForm = document.getElementById('add_card');
 const closeButtonCard = document.querySelector('#close_popupCard');
@@ -57,7 +57,7 @@ function formSubmitHandler(evt) {
   evt.preventDefault();
   profileInput.textContent = nameProfile.value;
   profInput.textContent = profProfile.value;
-  closePopup(modalProfile);
+  closePopup(popupProfile);
 }
 
 function createCard(name, link) {
@@ -103,14 +103,14 @@ cardForm.addEventListener('click', function (evt) {
 });
 
 PicterCards.forEach(card => {
-  addCard(card, createCard(card.name, card.link));
+  addCard(ElementContainer, createCard(card.name, card.link));
 });
 
 const cardImage = document.querySelectorAll('.card__pic');
 function showCard(popupName) {
-  openPopup(modalPic);
-  modalPic.querySelector('.popup__title').textContent = popupName;
-  modalPic.querySelector('.popup__image').src = popupLink;
-  modalPic.querySelector('.popup__image').alt = popupName;
+  openPopup(popupPic);
+  popupPic.querySelector('.popup__title').textContent = popupName;
+  popupPic.querySelector('.popup__image').src = popupLink;
+  popupPic.querySelector('.popup__image').alt = popupName;
 }
-closeButtonPic.addEventListener('click', () => closePopup(modalPic));
+closeButtonPic.addEventListener('click', () => closePopup(popupPic));

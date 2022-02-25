@@ -23,7 +23,7 @@
             <button class="profile__add-button" type="button"></button>
         </section>
         <section class="element">
-            <ul class="element__list">
+            <ul class="element__container">
             </ul>
         </section>
     </main>
@@ -32,9 +32,9 @@
     </footer>
     <div class="popup">
         <div class="popup__container">
-            <button class="popup__close" type="button"></button>
+            <button class="popup__close" id="close_Profile" type="button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" name="profile">
+            <form class="popup__form" name="profile"  id="edit_profile" >
                 <input class="popup__item" type="text" name="name" placeholder="Жак-Ив Кусто">
                 <input class="popup__item" type="text" name="about" placeholder="Исследователь океана">
                 <button class="popup__button" type="submit">Сохранить</button>
@@ -45,7 +45,7 @@
         <div class="popup__container">
             <button class="popup__button popup__button_close" id="close_popupCard" type="button"></button>
             <h2 class="popup__title">Новое Место</h2>
-            <form class="popup__form" id="card" name="pic">
+            <form class="popup__form"  id="add_card" name="pic">
                 <input class="popup__item" type="text" id="name_card" name="name" placeholder="Название">
                 <input class="popup__item" type="text" id="link_card" name="link" placeholder="Ссылка на картинку">
                 <button class="popup__button popup__button__save" type="submit">Создать</button>
