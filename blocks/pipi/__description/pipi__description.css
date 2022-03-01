@@ -1,0 +1,6 @@
+.pipi__description {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 280px;
+}

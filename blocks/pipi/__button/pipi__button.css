@@ -1,0 +1,20 @@
+.pipi__button:hover {
+    opacity: .5;
+}
+.pipi__button {
+    background-image: url(../../../image/Vector2.png);
+    background-color: #FFFFFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 19px;
+    min-width: 22px;
+    border: none;
+    margin-right: 20px;
+    transition: linear .5s;
+    cursor: pointer;
+}
+.pipi__button:active {
+    background-image: url(../../../image/Union.png);
+    opacity: 1;
+    transition: none;
+}

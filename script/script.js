@@ -4,15 +4,15 @@ const popupCard = document.querySelector('.popup__card');
 const popupPic = document.querySelector('.popup__picture');
 const closeButtonPic = document.querySelector('#close_Pic');
 const profileform = document.getElementById('edit_profile');
-const nameProfile = document.getElementById('name');
+const nameProfile = document.getElementById('name_card');
 const profProfile = document.getElementById('about');
 const profileInput = document.querySelector('.profile__title');
 const profInput = document.querySelector('.profile__subtitle');
-const editButton = content.querySelector('.profile__edit-button');
-const addButton = content.querySelector('.profile__add-button');
+const editButton = content.querySelector('.profile__edit_type_button');
+const addButton = content.querySelector('.profile__add_type_button');
 const closeButtonProfile = document.querySelector('#close_Profile');
 const ElementContainer = content.querySelector('.element__container');
-const cardTemplate = document.querySelector('#cards__template').content;
+const cardTemplate = document.querySelector('#pipi__template').content;
 const cardForm = document.getElementById('add_card');
 const closeButtonCard = document.querySelector('#close_popupCard');
 const PicterCards = [
@@ -61,18 +61,18 @@ function formSubmitHandler(evt) {
 }
 
 function createCard(name, link) {
-  const cardForm = cardTemplate.querySelector('.card').cloneNode(true);
-  cardForm.querySelector('.card__title').textContent = name;
-  cardForm.querySelector('.card__pic').src = link;
-  cardForm.querySelector('.card__pic').alt = name;
-  cardForm.querySelector('.card__button').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('card__button_state_active');
+  const pipiForm = cardTemplate.querySelector('.pipi').cloneNode(true);
+  pipiForm.querySelector('.pipi__title').textContent = name;
+  pipiForm.querySelector('.pipi__image').src = link;
+  pipiForm.querySelector('.pipi__image').alt = name;
+  pipiForm.querySelector('.pipi__button').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('pipi__button_state_active');
   });
-  cardForm.querySelector('.card__remove').addEventListener('click', function () {
-    const cards = document.querySelector('.card');
-    cards.remove();
+  pipiForm.querySelector('.pipi__remove').addEventListener('click', function () {
+    const pipis = document.querySelector('.pipi');
+    pipis.remove();
   });
-  cardForm.querySelector('.card__pic').addEventListener('click', function () {
+  pipiForm.querySelector('.pipi__image').addEventListener('click', function () {
     showCard(name, link);
     openPopup(modalPic);
   });
@@ -80,8 +80,8 @@ function createCard(name, link) {
   return cardForm;
 }
 
-function addCard(container, cardForm) {
-  container.prepend(cardForm);
+function addCard(container, pipiForm) {
+  container.prepend(pipiForm);
 }
 editButton.addEventListener('click', () => {
   valueForm();
@@ -89,25 +89,25 @@ editButton.addEventListener('click', () => {
 });
 closeButtonProfile.addEventListener('click', () => closePopup(popupProfile));
 
-profileform.addEventListener('click', formSubmitHandler);
+profileform.addEventListener('sumbit', formSubmitHandler);
 addButton.addEventListener('click', () => {
   openPopup(popupCard);
 });
 closeButtonCard.addEventListener('click', () => closePopup(modalCard));
 
-cardForm.addEventListener('click', function (evt) {
+cardForm.addEventListener('sumbit', function (evt) {
   evt.preventDefault();
-  addCard(cardsContainer, createCard(cardForm));
+  addCard(cardsContainer, createCard(cardForm.name.value, cardForm.link.value));
   cardForm.reset();
   closePopup(popupCard);
 });
 
-PicterCards.forEach(card => {
-  addCard(ElementContainer, createCard(card.name, card.link));
+PicterCards.forEach(pipi => {
+  addCard(ElementContainer, createCard(pipi.name, pipi.link));
 });
 
-const cardImage = document.querySelectorAll('.card__pic');
-function showCard(popupName) {
+const cardImage = document.querySelectorAll('.pipi__image');
+function showCard(popupName, popupLink) {
   openPopup(popupPic);
   popupPic.querySelector('.popup__title').textContent = popupName;
   popupPic.querySelector('.popup__image').src = popupLink;

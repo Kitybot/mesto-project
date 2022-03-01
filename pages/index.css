@@ -13,12 +13,7 @@
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
-@import url(../blocks/element/__button/element__button-like.css);
 @import url(../blocks/element/__container/elements__container.css);
-@import url(../blocks/element/__image/element__image.css);
-@import url(../blocks/element/__item/element__item.css);
-@import url(../blocks/element/__list/element__list.css);
-@import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/content/content.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__button/popup__button.css);
@@ -31,3 +26,9 @@
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__pic/popup__pic\ .css);
 @import url(../blocks/popup/_opened/popup__opened\ .css);
+@import url(../blocks/pipi/pipi.css);
+@import url(../blocks/pipi/__title/pipi__title.css);
+@import url(../blocks/pipi/__remove/pipi__remove.css);
+@import url(../blocks/pipi/__image/pipi__image.css);
+@import url(../blocks/pipi/__description/pipi__description.css);
+@import url(../blocks/pipi/__button/pipi__button.css);
