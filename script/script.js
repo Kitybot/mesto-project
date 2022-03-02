@@ -89,13 +89,13 @@ editButton.addEventListener('click', () => {
 });
 closeButtonProfile.addEventListener('click', () => closePopup(popupProfile));
 
-profileform.addEventListener('sumbit', formSubmitHandler);
+profileform.addEventListener('submit', formSubmitHandler);
 addButton.addEventListener('click', () => {
   openPopup(popupCard);
 });
 closeButtonCard.addEventListener('click', () => closePopup(popupCard));
 
-cardForm.addEventListener('sumbit', function (evt) {
+cardForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
   addCard(cardsContainer, createCard(cardForm.name.value, cardForm.link.value));
   cardForm.reset();
