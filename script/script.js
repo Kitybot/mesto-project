@@ -97,7 +97,7 @@ closeButtonCard.addEventListener('click', () => closePopup(popupCard));
 
 cardForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  addCard(cardsContainer, createCard(cardForm.name.value, cardForm.link.value));
+  addCard(ElementContainer, createCard(cardForm.name.value, cardForm.link.value));
   cardForm.reset();
   closePopup(popupCard);
 });
