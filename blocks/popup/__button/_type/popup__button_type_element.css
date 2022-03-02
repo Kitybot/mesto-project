@@ -1,0 +1,23 @@
+.popup__button_type_element:hover {
+    opacity: .8;
+}
+ 
+.popup__button_type_element {
+  background-image: url(../../../../image/Close\ Icon.png);
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  top: -36px;
+  background-position: center;
+  background-color: #000;
+}
+@media screen and (min-width: 1250px) {
+    .popup__button_type_element {
+      width: 32px;
+      height: 32px;
+      right: -40px;
+      top: -40px;
+    }
+}

@@ -109,7 +109,7 @@ PicterCards.forEach(card => {
 const cardImage = document.querySelectorAll('.pipi__image');
 function showCard(popupName, popupLink) {
   openPopup(popupPic);
-  popupPic.querySelector('.popup__title').textContent = popupName;
+  popupPic.querySelector('.popup__heading').textContent = popupName;
   popupPic.querySelector('.popup__image').src = popupLink;
   popupPic.querySelector('.popup__image').alt = popupName;
 }
