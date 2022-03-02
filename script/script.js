@@ -66,7 +66,7 @@ function createCard(name, link) {
   cardElement.querySelector('.pipi__image').src = link;
   cardElement.querySelector('.pipi__image').alt = name;
   cardElement.querySelector('.pipi__button').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('pipi__button');
+    evt.target.classList.toggle('pipi__button_live');
   });
   cardElement.querySelector('.pipi__remove').addEventListener('click', function () {
     const pipis = document.querySelector('.pipi');
