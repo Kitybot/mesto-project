@@ -10,7 +10,8 @@
     min-width: 22px;
     border: none;
     margin-right: 20px;
-    transition: linear .5s;
+    transition: opacity 0.5s ease;
+    -webkit-transition: opacity 0.5s ease;
     cursor: pointer;
 }
 .pipi__button:active {

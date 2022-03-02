@@ -1,5 +1,10 @@
 .pipi__image {
-    max-width: 100%;
-    min-width: 50%;
-    object-fit: cover;
-  }
+  max-width: 100%;
+  min-width: 50%;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  cursor: pointer;
+}

@@ -1,10 +1,10 @@
 const content = document.querySelector('.content');
 const popupProfile = document.querySelector('.popup__profile');
-const popupCard = document.querySelector('.popup__card');
+const popupCard = document.querySelector('.popup__pipi');
 const popupPic = document.querySelector('.popup__picture');
 const closeButtonPic = document.querySelector('#close_Pic');
 const profileform = document.getElementById('edit_profile');
-const nameProfile = document.getElementById('name_card');
+const nameProfile = document.getElementById('name');
 const profProfile = document.getElementById('about');
 const profileInput = document.querySelector('.profile__title');
 const profInput = document.querySelector('.profile__subtitle');
@@ -61,27 +61,27 @@ function formSubmitHandler(evt) {
 }
 
 function createCard(name, link) {
-  const pipiForm = cardTemplate.querySelector('.pipi').cloneNode(true);
-  pipiForm.querySelector('.pipi__title').textContent = name;
-  pipiForm.querySelector('.pipi__image').src = link;
-  pipiForm.querySelector('.pipi__image').alt = name;
-  pipiForm.querySelector('.pipi__button').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('pipi__button_state_active');
+  const cardElement = cardTemplate.querySelector('.pipi').cloneNode(true);
+  cardElement.querySelector('.pipi__title').textContent = name;
+  cardElement.querySelector('.pipi__image').src = link;
+  cardElement.querySelector('.pipi__image').alt = name;
+  cardElement.querySelector('.pipi__button').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('pipi__button');
   });
-  pipiForm.querySelector('.pipi__remove').addEventListener('click', function () {
+  cardElement.querySelector('.pipi__remove').addEventListener('click', function () {
     const pipis = document.querySelector('.pipi');
     pipis.remove();
   });
-  pipiForm.querySelector('.pipi__image').addEventListener('click', function () {
+  cardElement.querySelector('.pipi__image').addEventListener('click', function () {
     showCard(name, link);
-    openPopup(modalPic);
+    openPopup(PopupPic);
   });
 
-  return cardForm;
+  return cardElement;
 }
 
-function addCard(container, pipiForm) {
-  container.prepend(pipiForm);
+function addCard(container, cardElement) {
+  container.prepend(cardElement);
 }
 editButton.addEventListener('click', () => {
   valueForm();
@@ -93,7 +93,7 @@ profileform.addEventListener('sumbit', formSubmitHandler);
 addButton.addEventListener('click', () => {
   openPopup(popupCard);
 });
-closeButtonCard.addEventListener('click', () => closePopup(modalCard));
+closeButtonCard.addEventListener('click', () => closePopup(popupCard));
 
 cardForm.addEventListener('sumbit', function (evt) {
   evt.preventDefault();
@@ -102,8 +102,8 @@ cardForm.addEventListener('sumbit', function (evt) {
   closePopup(popupCard);
 });
 
-PicterCards.forEach(pipi => {
-  addCard(ElementContainer, createCard(pipi.name, pipi.link));
+PicterCards.forEach(card => {
+  addCard(ElementContainer, createCard(card.name, card.link));
 });
 
 const cardImage = document.querySelectorAll('.pipi__image');

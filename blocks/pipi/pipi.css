@@ -7,4 +7,6 @@
   grid-template-rows: 282px 79px;
   grid-template-columns: 282px;
   position: relative;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
 }
