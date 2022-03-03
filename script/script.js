@@ -53,7 +53,7 @@ function valueForm() {
   nameProfile.value = profileInput.textContent;
   profProfile.value = profInput.textContent;
 }
-function formSubmitHandler(evt) {
+function handleSubmitProfileForm(evt) {
   evt.preventDefault();
   profileInput.textContent = nameProfile.value;
   profInput.textContent = profProfile.value;
@@ -69,12 +69,12 @@ function createCard(name, link) {
     evt.target.classList.toggle('pipi__button_live');
   });
   cardElement.querySelector('.pipi__remove').addEventListener('click', function () {
-    const pipis = document.querySelector('.pipi');
-    pipis.remove();
+    const meme = document.querySelector('.pipi');
+    meme.remove();
   });
   cardElement.querySelector('.pipi__image').addEventListener('click', function () {
     showCard(name, link);
-    openPopup(PopupPic);
+    openPopup(popupPic);
   });
 
   return cardElement;
@@ -89,7 +89,7 @@ editButton.addEventListener('click', () => {
 });
 closeButtonProfile.addEventListener('click', () => closePopup(popupProfile));
 
-profileform.addEventListener('submit', formSubmitHandler);
+profileform.addEventListener('submit', handleSubmitProfileForm);
 addButton.addEventListener('click', () => {
   openPopup(popupCard);
 });
