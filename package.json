@@ -1,0 +1,22 @@
+{
+  "name": "mesto-project",
+  "version": "0.0.1",
+  "description": "* Figma\r * Картинки\r * CSS\r * HTML\r * JS\r **Figma**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kitybot/mesto-project.git"
+  },
+  "author": "Nick Yaschenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kitybot/mesto-project/issues"
+  },
+  "homepage": "https://github.com/Kitybot/mesto-project#readme",
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}
