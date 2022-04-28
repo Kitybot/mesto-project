@@ -1,8 +1,8 @@
-
-import { keys } from "./validations";
-import { popupProfile, editButton, addButton, closeButtonProfile, profileInput, profInput } from "./util";
-import { addEventListener , openPopup } from "./modal";
-import { addEventListener } from "./card";
+import '../pages/index.css';
+import { enableValidation } from "./validations.js";
+import { popupProfile, editButton, addButton, closeButtonProfile, profileInput, profInput, profileform, closeButtonCard } from "./util.js";
+import {  openPopup } from "./modal.js";
+import { addEventListener } from "./card.js";
 enableValidation();
 
 function valueForm() {

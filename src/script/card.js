@@ -1,5 +1,5 @@
-import { cardForm, cardTemplate, popupPic, cardImage } from "./util";
-import { closePopup, openPopup } from "./modal";
+import { cardForm, cardTemplate, popupPic, cardImage, ElementContainer, closeButtonPic } from "./util.js";
+import { closePopup, openPopup } from "./modal.js";
 const PicterCards = [
     {
       name: 'Сахалин',

@@ -1,4 +1,4 @@
-import { enableValidationForm } from "./import";
+import { enableValidationForm } from "./import.js";
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(enableValidationForm.errorClass);
