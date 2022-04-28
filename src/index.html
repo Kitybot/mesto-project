@@ -10,12 +10,12 @@
 
 <body class="page">
     <header class="header">
-        <img class="header__logo" src="./image/logo.png" alt="картинка грузится">
+        <img class="header__logo" src="<%=require('./image/logo.png')%>" alt="картинка грузится">
     </header>
     <main class="content">
         <section class="profile">
             <div class="profile__container">
-                <img class="profile__avatar" src="./image/image.jpg" alt="Афатар">
+                <img class="profile__avatar" src="<%=require('./image/image.jpg')%>" alt="Афатар">
                 <h1 class="profile__title">Введите имя</h1>
                 <p class="profile__subtitle">Информация о себе</p>
                 <button class="profile__edit-button profile__edit_type_button " type="button"></button>
