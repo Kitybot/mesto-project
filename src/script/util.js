@@ -30,6 +30,12 @@ export const inputProfEditForm = document.querySelector("#inputProf");
 export const inputFirstname = document.querySelectorAll("#inputFirstname");
 export const editForm = document.querySelector("#editForm");
 export const addForm = document.querySelector("#addForm");
+export const inputPlaceAddForm = document.querySelector("#inputPlace");
+export const inputLinkAddForm = document.querySelector("#inputLink");
+export const inputLinkEditAvatar = document.querySelector("#inputLinkEditAvatar");
+export const cardsList = document.querySelector(".cards__list");
+export const profileName = document.querySelector(".profile__name");
+export const profileProf = document.querySelector(".profile__subtitle");
 
 export const PicterCards = [
   {

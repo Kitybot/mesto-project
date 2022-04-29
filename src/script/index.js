@@ -1,7 +1,7 @@
 import '../pages/index.css';
 import { enableValidation } from "./validations.js";
-import { popupProfile, editButton, addButton, closeButtonProfile, profileInput, profInput, profileform, closeButtonCard, popupCard, nameProfile, profProfile } from "./util.js";
-import {  openPopup, closePopup} from "./modal.js";
+import { popupProfile, editButton, addButton, closeButtonProfile, profileInput, profInput, profileform, closeButtonCard } from "./util.js";
+import {  openPopup } from "./modal.js";
 import { addEventListener } from "./card.js";
 enableValidation();
 
@@ -27,8 +27,5 @@ addButton.addEventListener('click', () => {
   openPopup(popupCard);
 });
 closeButtonCard.addEventListener('click', () => closePopup(popupCard));
-
-
-
 
 
