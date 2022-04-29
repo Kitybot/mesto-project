@@ -4,10 +4,16 @@ import { updateUserProfile, addNewCard, updateUserAvatar } from "./api.js";
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown',endEscape);
+    document.addEventListener('mousedown', closeCardVisibel);
+
+    popup.classList.add('popup_opened');
   }
  export function closePopup(popup) {
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', endEscape);
+    document.removeEventListener('mousedown',closeCardVisibel);
+
+    popup.classList.remove('popup_opened');
 }
 function endEscape(evt) {
     if (evt.key === "Escape") {
@@ -99,4 +105,9 @@ export function handleEditAvatarFormSubmit(evt) {
       console.log(err);
     })
     .finally(() => renderLoading(false));
+}
+function closeCardVisibel(evt) {
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target);
+  }
 }

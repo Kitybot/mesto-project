@@ -1,9 +1,9 @@
 import '../pages/index.css';
-import { enableValidation } from "./validations.js";
-import { popupProfile, editButton, addButton, closeButtonProfile, profileInput, profInput, profileform, closeButtonCard } from "./util.js";
-import {  openPopup } from "./modal.js";
+import { enableValidation} from "./validations.js";
+import { popupProfile, editButton, addButton, closeButtonProfile, profileInput, profInput, profileform, closeButtonCard, nameProfile, profProfile, popupCard, enableValidationForm} from "./util.js";
+import {  openPopup, closePopup } from "./modal.js";
 import { addEventListener } from "./card.js";
-enableValidation();
+enableValidation(enableValidationForm);
 
 function valueForm() {
   nameProfile.value = profileInput.textContent;

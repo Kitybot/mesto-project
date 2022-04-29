@@ -1,4 +1,4 @@
-import {enableValidation } from "./util";
+
 const showInputError = (formSelector, inputElement, errorMessage, settings) => {
   const errorElement = formSelector.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(settings.ErrorClass.substring(1));
@@ -15,7 +15,7 @@ const hideInputError = (formSelector, inputElement, settings) => {
 const isValidForm = (formSelector, inputElement, settings) => {
   if (!inputElement.validity.valid) {
     showInputError(
-      formElement,
+      formSelector,
       inputElement,
       inputElement.validationMessage,
       settings
