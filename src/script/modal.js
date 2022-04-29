@@ -3,7 +3,7 @@ import{ createCard } from './card'
 import { updateUserProfile, addNewCard, updateUserAvatar } from "./api.js";
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
-    document.removeEventListener('keydown',endEscape);
+    document.addEventListener('keydown',endEscape);
   }
  export function closePopup(popup) {
     popup.classList.remove('popup_opened');
