@@ -1,18 +1,18 @@
 
 const showInputError = (formSelector, inputElement, errorMessage,  settingsObject) => {
   const errorElement = formSelector.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(settingsObject.ErrorClass.substring(1));
+  inputElement.classList.add(settingsObject.ErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(settingsObject.errorClass.substring(1));
+  errorElement.classList.add(settingsObject.errorClass);
 };
 
 const hideInputError = (formSelector, inputElement, settingsObject) => {
   const errorElement = formSelector.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(settingsObject.ErrorClass.substring(1));
-  errorElement.classList.remove(settingsObject.errorClass.substring(1));
+  inputElement.classList.remove(settingsObject.ErrorClass);
   errorElement.textContent = "";
+  errorElement.classList.remove(settingsObject.errorClass);
 };
-const isValidForm = (formSelector, inputElement, settings) => {
+const isValidForm = (formSelector, inputElement, settingsObject) => {
   if (!inputElement.validity.valid) {
     showInputError(
       formSelector,
