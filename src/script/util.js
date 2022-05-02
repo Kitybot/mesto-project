@@ -18,7 +18,6 @@ export const closeButtonCard = document.querySelector('#close_popupCard');
 export const cardImage = document.querySelectorAll('.pipi__image');
 export const imageProfileAvatar = document.querySelector(".profile__avatar");
 export const editAvatarForm = document.querySelector("#editAvatarForm");
-export const formInput = document.querySelector(".form__input");
 export const popups = document.querySelectorAll(".popup");
 export const popupDeleteCard = document.querySelector("#popupDeleteCard");
 export const deleteCardButton = document.querySelector("#deleteCardButton");
@@ -36,6 +35,8 @@ export const inputLinkEditAvatar = document.querySelector("#inputLinkEditAvatar"
 export const cardsList = document.querySelector(".cards__list");
 export const profileName = document.querySelector(".profile__name");
 export const profileProf = document.querySelector(".profile__subtitle");
+export const formElement = document.querySelector('.popup__form');
+export const formInput = formElement.querySelector('.popup__item');
 
 export const PicterCards = [
   {

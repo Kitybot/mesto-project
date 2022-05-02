@@ -1,6 +1,5 @@
 import { addForm, profileProf, profileName, formInput, inputProfEditForm, inputLinkEditAvatar, cardsList, formButton, inputLinkAddForm, inputPlaceAddForm, popupAdd } from "./util";
 import{ createCard } from './card'
-import { updateUserProfile, addNewCard, updateUserAvatar } from "./api.js";
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown',endEscape);

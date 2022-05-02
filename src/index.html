@@ -30,13 +30,15 @@
     <footer class="footer">
         <p class="footer__paragraph">© 2020 Mesto Russia</p>
     </footer>
-    <div class="popup popup__profile" novalidate>
+    <div class="popup popup__profile">
         <div class="popup__container">
             <button class="popup__close" id="close_Profile" type="button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" name="edit_profile"  id="edit_profile" >
+            <form class="popup__form" name="edit_profile"  id="edit_profile" novalidate >
                 <input class="popup__item" type="text" id="name" name="name" minlength="2" maxlength="40" required placeholder="Жак-Ив Кусто">
+                <span class=" Name-error popup__item-error"></span>
                 <input class="popup__item" type="text" id="about" name="about" minlength="2" maxlength="2000" required placeholder="Исследователь океана">
+                <span class=" About-error popup__item-error"></span>
                 <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
             </form>
         </div>
@@ -46,8 +48,10 @@
             <button class="popup__close" id="close_popupCard" type="button"></button>
             <h2 class="popup__title">Новое Место</h2>
             <form class="popup__form"  id="add_card" name="pic">
-                <input class="popup__item" type="text" id="name_card" name="name" placeholder="Название">
-                <input class="popup__item" type="url" id="link_card" name="link" placeholder="Ссылка на картинку">
+                <input class="popup__item" type="text" id="name_card" name="name"  minlength="2" maxlength="40" required placeholder="Название">
+                <span class=" Name_card-error popup__item-error"></span>
+                <input class="popup__item" type="url" id="link_card" name="link" minlength="2" maxlength="2000" required placeholder="Ссылка на картинку">
+                <span class=" Link_card-errsr popup__item-error"></span>
                 <button class="popup__button popup__button_type_save" type="submit">Создать</button>
             </form>
         </div>

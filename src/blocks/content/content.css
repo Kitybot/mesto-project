@@ -3,6 +3,9 @@
   min-width: 300px;
   margin: auto;
 }
+.popup__item_type_error{
+  border-bottom-color: red;
+}
 
 @media (max-width: 1024px) {
   .content {
