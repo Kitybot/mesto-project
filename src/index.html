@@ -16,7 +16,7 @@
         <section class="profile">
             <div class="profile__container">
                 <img class="profile__avatar" src="<%=require('./image/image.jpg')%>" alt="Афатар">
-                <h1 class="profile__title">Введите имя</h1>
+                <h1  class="profile__title">Введите имя</h1>
                 <p class="profile__subtitle">Информация о себе</p>
                 <button class="profile__edit-button profile__edit_type_button " type="button"></button>
             </div>
@@ -30,13 +30,13 @@
     <footer class="footer">
         <p class="footer__paragraph">© 2020 Mesto Russia</p>
     </footer>
-    <div class="popup popup__profile">
+    <div class="popup popup__profile" novalidate>
         <div class="popup__container">
             <button class="popup__close" id="close_Profile" type="button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form" name="edit_profile"  id="edit_profile" >
-                <input class="popup__item" type="text" id="name" name="name" placeholder="Жак-Ив Кусто">
-                <input class="popup__item" type="text" id="about" name="about" placeholder="Исследователь океана">
+                <input class="popup__item" type="text" id="name" name="name" minlength="2" maxlength="40" required placeholder="Жак-Ив Кусто">
+                <input class="popup__item" type="text" id="about" name="about" minlength="2" maxlength="2000" required placeholder="Исследователь океана">
                 <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
             </form>
         </div>
@@ -47,7 +47,7 @@
             <h2 class="popup__title">Новое Место</h2>
             <form class="popup__form"  id="add_card" name="pic">
                 <input class="popup__item" type="text" id="name_card" name="name" placeholder="Название">
-                <input class="popup__item" type="text" id="link_card" name="link" placeholder="Ссылка на картинку">
+                <input class="popup__item" type="url" id="link_card" name="link" placeholder="Ссылка на картинку">
                 <button class="popup__button popup__button_type_save" type="submit">Создать</button>
             </form>
         </div>
