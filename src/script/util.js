@@ -67,9 +67,9 @@ export const PicterCards = [
 
 export const enableValidationForm = {
   formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  buttonSelector: ".popup__save",
-  buttonClass: "popup__save_inactive",
-  ErrorClass: "popup__input_type_error",
-  errorClass: "popup__input-error_active",
+  inputSelector: ".popup__item",
+  buttonSelector: ".popup__button",
+  buttonClass: "popup__button_inactive",
+  ErrorClass: "popup__item_type_error",
+  errorClass: "popup__item-error_active",
 }; 
