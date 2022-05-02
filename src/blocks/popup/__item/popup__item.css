@@ -17,3 +17,9 @@
     margin: 0 22px 30px 22px;
   }
 }
+.popup__item:invalid{
+  border-bottom-color: red;
+}
+.popup__item:valid{
+  border: 1px solid green;
+}
