@@ -1,7 +1,7 @@
 import {formElement, formInput} from "./util";
 
 const showInputError = (formElement, formInput, errorMessage,  settingsObject) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  const errorElement = formElement.querySelector(`.${formInput.id}-error`);
   formInput.classList.add(settingsObject.ErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(settingsObject.errorClass);
@@ -13,7 +13,7 @@ const hideInputError = (formElement, formInput, settingsObject) => {
   errorElement.textContent = "";
   errorElement.classList.remove(settingsObject.errorClass);
 };
-const isValidForm = (formElement,formInput, settingsObject) => {
+const isValidForm = (formElement, formInput, settingsObject) => {
   if (!formInput.validity.valid) {
     showInputError(
       formElement,
