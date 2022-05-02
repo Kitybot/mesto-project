@@ -1,28 +1,28 @@
 import {formElement, formInput} from "./util";
 
-const showInputError = (formElement, formInput, errorMessage,  settingsObject) => {
-  const errorElement = formElement.querySelector(`.${formInput.id}-error`);
-  formInput.classList.add(settingsObject.ErrorClass);
+const showInputError = (formElement, inputSelector, errorMessage,  settingsObject) => {
+  const errorElement = formElement.querySelector(`.${inputSelector.id}-error`);
+  inputSelector.classList.add(settingsObject.ErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(settingsObject.errorClass);
 };
 
-const hideInputError = (formElement, formInput, settingsObject) => {
-  const errorElement = formElement.querySelector(`.${formInput.id}-error`);
-  formInput.classList.remove(settingsObject.ErrorClass);
+const hideInputError = (formElement, inputSelector, settingsObject) => {
+  const errorElement = formElement.querySelector(`.${inputSelector.id}-error`);
+  inputSelector.classList.remove(settingsObject.ErrorClass);
   errorElement.textContent = "";
   errorElement.classList.remove(settingsObject.errorClass);
 };
-const isValidForm = (formElement, formInput, settingsObject) => {
-  if (!formInput.validity.valid) {
+const isValidForm = (formElement,inputSelector, settingsObject) => {
+  if (!inputSelector.validity.valid) {
     showInputError(
       formElement,
-      formInput,
-      formInput.validationMessage,
+      inputSelector,
+      inputSelector.validationMessage,
       settingsObject
     );
   } else {
-    hideInputError(formElement, formInput, settingsObject);
+    hideInputError(formElement, inputSelector, settingsObject);
   }
 };
 
@@ -34,22 +34,22 @@ const setEventListeners = (formElement, settingsObject) => {
     settingsObject.buttonSelector
   );
 
-  inputList.forEach((formInput) => {
-    formInput.addEventListener("input", () => {
-      isValidForm(formElement, formInput, settingsObject);
+  inputList.forEach((inputSelector) => {
+    inputSelector.addEventListener("input", () => {
+      isValidForm(formElement, inputSelector, settingsObject);
       toggleButtonState(inputList,  buttonClass);
     });
   });
 };
 
 const hasInvalidInput = (inputList) => {
-  return inputList.some((formInput) => {
-    return !formInput.validity.valid;
+  return inputList.some((inputSelector) => {
+    return !inputSelector.validity.valid;
   });
 };
 
-const toggleButtonState = (inputList,  buttonClass) => {
-  if (hasInvalidInput(inputList)) {
+const toggleButtonState = (inputSelector,  buttonClass) => {
+  if (hasInvalidInput(inputSelector)) {
     buttonClass.setAttribute("disabled", true);
   } else {
     buttonClass.removeAttribute("disabled");

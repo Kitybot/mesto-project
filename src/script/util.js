@@ -36,7 +36,7 @@ export const cardsList = document.querySelector(".cards__list");
 export const profileName = document.querySelector(".profile__name");
 export const profileProf = document.querySelector(".profile__subtitle");
 export const formElement = document.querySelector('.popup__form');
-export const formInput = formElement.querySelector('.popup__item');
+export const formInput = document.querySelector('.popup__item');
 
 export const PicterCards = [
   {
