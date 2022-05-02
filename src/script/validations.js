@@ -1,4 +1,4 @@
-import {formElement, formInput} from "./util";
+
 
 const showInputError = (formElement, inputSelector, errorMessage,  settingsObject) => {
   const errorElement = formElement.querySelector(`.${inputSelector.id}-error`);
@@ -13,7 +13,7 @@ const hideInputError = (formElement, inputSelector, settingsObject) => {
   errorElement.textContent = "";
   errorElement.classList.remove(settingsObject.errorClass);
 };
-const isValidForm = (formElement,inputSelector, settingsObject) => {
+const isValidForm = (formElement, inputSelector, settingsObject) => {
   if (!inputSelector.validity.valid) {
     showInputError(
       formElement,
@@ -33,11 +33,10 @@ const setEventListeners = (formElement, settingsObject) => {
   const submitButton = formElement.querySelector(
     settingsObject.buttonSelector
   );
-
   inputList.forEach((inputSelector) => {
-    inputSelector.addEventListener("input", () => {
+    inputSelector.addEventListener("change", () => {
       isValidForm(formElement, inputSelector, settingsObject);
-      toggleButtonState(inputList,  buttonClass);
+      toggleButtonState(inputList,  buttonClass, settingsObject);
     });
   });
 };
@@ -48,18 +47,20 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputSelector,  buttonClass) => {
-  if (hasInvalidInput(inputSelector)) {
-    buttonClass.setAttribute("disabled", true);
+const toggleButtonState = (inputList,  submitButton, settingsObject) => {
+  if (hasInvalidInput(inputList)) {
+    submitButton.disable = true;
+    submitButton.classList.add(settingsObject.buttonClass);
   } else {
-    buttonClass.removeAttribute("disabled");
+    submitButton.disabled = false;
+    submitButton.classList.remove(settingsObject.buttonClass);
   }
 };
 
 export const enableValidation = (settingsObject) => {
   const formList = Array.from(document.querySelectorAll(settingsObject.formSelector));
   formList.forEach((formElement) => {
-    formElement.addEventListener("submit", (evt) => {
+    formElement.addEventListener("submit", function (evt)  {
       evt.preventDefault();
     });
     setEventListeners(formElement, settingsObject);
