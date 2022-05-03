@@ -40,29 +40,29 @@ function isValidForm (formInput, inputSelector, settingsObject) {
   }
 };
 
-function setEventListeners (formInput, settingsObject) {
+const setEventListeners = (formElement, settingsObject) => {
   const inputList = Array.from(
-    formInput.querySelectorAll(settingsObject.inputSelector)
+    formElement.querySelectorAll(settingsObject.inputSelector)
   );
-  const buttonClass = formInput.querySelector(
+  const buttonClass = formElement.querySelector(
     settingsObject.buttonSelector
   );
   toggleButtonState(inputList, buttonClass, settingsObject);
 
   inputList.forEach((inputSelector) => {
-    inputSelector.addEventListener("input", () => {
-      isValidForm(formInput, inputSelector, settingsObject);
+    inputSelector.addEventListener("input", function() {
+      isValidForm(formElement, inputSelector, settingsObject);
       toggleButtonState(inputList,  buttonClass, settingsObject);
     });
   });
 };
 
-export function enableValidation (settingsObject) {
+export const enableValidation = (settingsObject) => {
   const formList = Array.from(document.querySelectorAll(settingsObject.formSelector));
-  formList.forEach((formInput) => {
-    formInput.addEventListener("submit", (evt) =>  {
+  formList.forEach((formElement) => {
+    formElement.addEventListener("submit", function(evt)  {
       evt.preventDefault();
     });
-    setEventListeners(formInput, settingsObject);
+    setEventListeners(formElement, settingsObject);
   });
 };
