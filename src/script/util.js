@@ -65,7 +65,7 @@ export const PicterCards = [
   },
 ];
 
-export const enableValidationForm = {
+export const validationSettingsObject = {
   formSelector: ".popup__form",
   inputSelector: ".popup__item",
   buttonSelector: ".popup__button",

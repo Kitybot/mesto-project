@@ -3,13 +3,13 @@ function hasInvalidInput (inputList) {
     return !inputSelector.validity.valid;
   });
 };
-function toggleButtonState  (inputList,  submitButton, settingsObject)  {
+function toggleButtonState  (inputList,  buttonClass, settingsObject)  {
   if (hasInvalidInput(inputList)) {
-    submitButton.disable = true;
-    submitButton.classList.add(settingsObject.buttonClass);
+    buttonClass.disable = true;
+    buttonClass.classList.add(settingsObject.buttonSelector);
   } else {
-    submitButton.disabled = false;
-    submitButton.classList.remove(settingsObject.buttonClass);
+    buttonClass.disabled = false;
+    buttonClass.classList.remove(settingsObject.buttonSelector);
   }
 };
 
