@@ -56,11 +56,11 @@ export const PicterCards = [
   },
 ];
 
-export const validationSettingObject = {
+export const validationSettingObject = ({
   formSelector: ".popup__form",
   inputSelector: ".popup__item",
   buttonSelector: ".popup__button",
   buttonClass: "popup__button_inactive",
-  ErrorClass: "popup__item-error",
+  ErrorClass: "popup__item_type_error",
   inputErrorClass: "popup__item-error_active",
-}; 
+}); 
