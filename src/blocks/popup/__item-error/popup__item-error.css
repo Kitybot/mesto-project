@@ -5,6 +5,12 @@
   font-size: 12px;
   line-height: 15px;
   color: #ff0000;
+  position: absolute;
+  top: 50%;
+  left: 20%;
   transition: visibility 0.3s, opacity 0.3s linear;
-  margin-left: 90px;
+}
+.popup__item-error:last-of-type{
+  bottom: 20%;
+  position: absolute;
 }
