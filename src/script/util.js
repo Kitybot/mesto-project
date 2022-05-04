@@ -28,8 +28,6 @@ export const addForm = document.querySelector("#addForm");
 export const cardsList = document.querySelector(".cards__list");
 export const profileName = document.querySelector(".profile__name");
 export const profileProf = document.querySelector(".profile__subtitle");
-export const formElement = page.querySelector('.popup__form');
-export const InputElement = formElement.querySelector('.popup__item');
 
 export const PicterCards = [
   {
