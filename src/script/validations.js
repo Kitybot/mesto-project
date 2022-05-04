@@ -1,5 +1,3 @@
-import { formElement } from "./util";
-
 function hasInvalidInput (inputList) {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
