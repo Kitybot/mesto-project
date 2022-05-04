@@ -1,3 +1,4 @@
+export const page = document.querySelector('.page');
 export const content = document.querySelector('.content');
 export const popupProfile = document.querySelector('.popup__profile');
 export const popupCard = document.querySelector('.popup__pipi');
@@ -16,27 +17,19 @@ export const cardTemplate = document.querySelector('#pipi__template').content;
 export const cardForm = document.getElementById('add_card');
 export const closeButtonCard = document.querySelector('#close_popupCard');
 export const cardImage = document.querySelectorAll('.pipi__image');
-export const imageProfileAvatar = document.querySelector(".profile__avatar");
-export const editAvatarForm = document.querySelector("#editAvatarForm");
 export const popups = document.querySelectorAll(".popup");
 export const popupDeleteCard = document.querySelector("#popupDeleteCard");
 export const deleteCardButton = document.querySelector("#deleteCardButton");
 export const formButton = document.querySelectorAll(".form__button");
 export const popupEdit = document.querySelector("#popupEdit");
 export const popupAdd = document.querySelector("#popupAdd");
-export const popupEditAvatar = document.querySelector("#popupEditAvatar");
-export const inputProfEditForm = document.querySelector("#inputProf");
-export const inputFirstname = document.querySelectorAll("#inputFirstname");
 export const editForm = document.querySelector("#editForm");
 export const addForm = document.querySelector("#addForm");
-export const inputPlaceAddForm = document.querySelector("#inputPlace");
-export const inputLinkAddForm = document.querySelector("#inputLink");
-export const inputLinkEditAvatar = document.querySelector("#inputLinkEditAvatar");
 export const cardsList = document.querySelector(".cards__list");
 export const profileName = document.querySelector(".profile__name");
 export const profileProf = document.querySelector(".profile__subtitle");
-export const formElement = document.querySelector('.popup__form');
-export const formInput = document.querySelector('.popup__item');
+export const formElemen = page.querySelector('.popup__form');
+export const formInput = formElemen.querySelector('.popup__item');
 
 export const PicterCards = [
   {
@@ -65,7 +58,7 @@ export const PicterCards = [
   },
 ];
 
-export const enableValidationForm = {
+export const validationSettingObject = {
   formSelector: ".popup__form",
   inputSelector: ".popup__item",
   buttonSelector: ".popup__button",
