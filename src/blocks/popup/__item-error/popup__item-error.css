@@ -6,7 +6,5 @@
   line-height: 15px;
   color: #ff0000;
   position: absolute;
-  top: 52%;
-  left: 0;
   transition: visibility 0.3s, opacity 0.3s linear;
 }

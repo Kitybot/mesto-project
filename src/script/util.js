@@ -70,6 +70,6 @@ export const enableValidationForm = {
   inputSelector: ".popup__item",
   buttonSelector: ".popup__button",
   buttonClass: "popup__button_inactive",
-  ErrorClass: "popup__item_type_error",
+  ErrorClass: "popup__item-error",
   inputErrorClass: "popup__item-error_active",
 }; 
