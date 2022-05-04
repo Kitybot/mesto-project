@@ -8,7 +8,7 @@ export function openPopup(popup) {
     document.removeEventListener('keydown', endEscape);
 
 }
-function endEscape(evt) {
+export function endEscape(evt) {
     if (evt.key === "Escape") {
       const openedPopup = document.querySelector('.popup_opened');
       closePopup(openedPopup);
