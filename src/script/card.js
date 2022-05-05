@@ -1,5 +1,6 @@
-import { cardForm, cardTemplate, popupPic, cardImage, elementContainer, closeButtonPic, popupCard } from "./constants";
+import { cardForm, cardTemplate, popupPic, cardImage, elementContainer, closeButtonPic, popupCard, cardSaveButtom} from "./constants";
 import { closePopup, openPopup } from "./modal.js";
+import { disabledSaveButton } from "./utils";
 const picterCards = [
     {
       name: 'Сахалин',
@@ -30,15 +31,15 @@ const picterCards = [
   const cardElement = cardTemplate.querySelector('.pipi').cloneNode(true);
   cardElement.querySelector('.pipi__title').textContent = name;
   cardElement.querySelector('.pipi__image').src = link;
-  cardElement.querySelector('.pipi__image').alt = name;
-  cardElement.querySelector('.pipi__button').addEventListener('click', function (evt) {
+  cardElement.alt = name;
+  cardElement.querySelector('.pipi__button').addEventListener('sumbit', function (evt) {
     evt.target.classList.toggle('pipi__button_live');
   });
   cardElement.querySelector('.pipi__remove').addEventListener('click', function () {
     const meme = document.querySelector('.pipi');
     cardElement.remove();
   });
-  cardElement.querySelector('.pipi__image').addEventListener('click', function () {
+  cardElement.addEventListener('sumbit', function () {
     showCard(name, link);
     openPopup(popupPic);
   });
@@ -48,11 +49,12 @@ const picterCards = [
 picterCards.forEach(card => {
     addCard(elementContainer, createCard(card.name, card.link));
   });
-
+  
   cardForm.addEventListener('submit', function (evt) {
     evt.preventDefault();
     addCard(elementContainer, createCard(cardForm.name.value, cardForm.link.value));
     cardForm.reset();
+    disabledSaveButton(cardSaveButtom);
     closePopup(popupCard);
   });
   

@@ -23,6 +23,7 @@ export const popupEdit = document.querySelector("#popupEdit");
 export const popupAdd = document.querySelector("#popupAdd");
 export const editForm = document.querySelector("#editForm");
 export const addForm = document.querySelector("#addForm");
+export const cardSaveButtom = cardForm.querySelector('#card-button-save');
 export const cardsList = document.querySelector(".cards__list");
 export const profileName = document.querySelector(".profile__name");
 export const profileProf = document.querySelector(".profile__subtitle");
