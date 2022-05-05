@@ -1,6 +1,6 @@
 import { cardForm, cardTemplate, popupPic, cardImage, elementContainer, closeButtonPic, popupCard, cardSaveButtom} from "./constants";
 import { closePopup, openPopup } from "./modal.js";
-import { disabledSaveButton } from "./utils";
+import { disabledButtonSave } from "./utils";
 const picterCards = [
     {
       name: 'Сахалин',
@@ -54,7 +54,7 @@ picterCards.forEach(card => {
     evt.preventDefault();
     addCard(elementContainer, createCard(cardForm.name.value, cardForm.link.value));
     cardForm.reset();
-    disabledSaveButton(cardSaveButtom);
+    disabledButtonSave(cardSaveButtom);
     closePopup(popupCard);
   });
   

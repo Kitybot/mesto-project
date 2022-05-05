@@ -1,6 +1,6 @@
 import { validationSettings } from "./constants";
-export function disabledSaveButton(cardSaveButtom) {
-    cardSaveButtom.classList.add(validationSettings.buttonClass);
-    cardSaveButtom.disabled = true;
+
+export function disabledButtonSave(button) {
+    button.classList.add(validationSettings.buttonClass);
+    button.disabled = true;
 };
-  
