@@ -1,6 +1,6 @@
-import { cardForm, cardTemplate, popupPic, cardImage, ElementContainer, closeButtonPic, popupCard } from "./util.js";
+import { cardForm, cardTemplate, popupPic, cardImage, elementContainer, closeButtonPic, popupCard } from "./constants";
 import { closePopup, openPopup } from "./modal.js";
-const PicterCards = [
+const picterCards = [
     {
       name: 'Сахалин',
       link: 'https://putpostrane.ru/wp-content/uploads/2021/07/2021-07-09_16-08-54.png'
@@ -36,7 +36,7 @@ const PicterCards = [
   });
   cardElement.querySelector('.pipi__remove').addEventListener('click', function () {
     const meme = document.querySelector('.pipi');
-    meme.remove();
+    cardElement.remove();
   });
   cardElement.querySelector('.pipi__image').addEventListener('click', function () {
     showCard(name, link);
@@ -45,13 +45,13 @@ const PicterCards = [
 
   return cardElement;
 }
-PicterCards.forEach(card => {
-    addCard(ElementContainer, createCard(card.name, card.link));
+picterCards.forEach(card => {
+    addCard(elementContainer, createCard(card.name, card.link));
   });
 
   cardForm.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    addCard(ElementContainer, createCard(cardForm.name.value, cardForm.link.value));
+    addCard(elementContainer, createCard(cardForm.name.value, cardForm.link.value));
     cardForm.reset();
     closePopup(popupCard);
   });

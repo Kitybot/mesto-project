@@ -1,11 +1,11 @@
 import '../pages/index.css';
 import { enableValidation} from "./validations.js";
-import { popupProfile, editButton, addButton, closeButtonProfile, profileInput, profInput, profileform, closeButtonCard, nameProfile, profProfile, popupCard,validationSettings } from "./util.js";
+import { popupProfile, editButton, addButton, closeButtonProfile, profileInput, profInput, profileform, closeButtonCard, nameProfile, profProfile, popupCard,validationSettings } from "./constants";
 import {  openPopup, closePopup } from "./modal.js";
 import { addEventListener } from "./card.js";
 enableValidation(validationSettings);
 
-function valueForm() {
+function fillProfileInputs() {
   nameProfile.value = profileInput.textContent;
   profProfile.value = profInput.textContent;
 }
@@ -17,7 +17,7 @@ function handleSubmitProfileForm(evt) {
 }
 
 editButton.addEventListener('click', () => {
-  valueForm();
+  fillProfileInputs();
   openPopup(popupProfile);
 });
 closeButtonProfile.addEventListener('click', () => closePopup(popupProfile));

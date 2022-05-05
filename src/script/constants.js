@@ -1,4 +1,3 @@
-export const page = document.querySelector('.page');
 export const content = document.querySelector('.content');
 export const popupProfile = document.querySelector('.popup__profile');
 export const popupCard = document.querySelector('.popup__pipi');
@@ -12,15 +11,14 @@ export const profInput = document.querySelector('.profile__subtitle');
 export const editButton = content.querySelector('.profile__edit_type_button');
 export const addButton = content.querySelector('.profile__add_type_button');
 export const closeButtonProfile = document.querySelector('#close_Profile');
-export const ElementContainer = content.querySelector('.element__container');
+export const elementContainer = content.querySelector('.element__container');
 export const cardTemplate = document.querySelector('#pipi__template').content;
 export const cardForm = document.getElementById('add_card');
 export const closeButtonCard = document.querySelector('#close_popupCard');
-export const cardImage = document.querySelectorAll('.pipi__image');
+export const cardImage = document.querySelector('.pipi__image');
 export const popups = document.querySelectorAll(".popup");
 export const popupDeleteCard = document.querySelector("#popupDeleteCard");
 export const deleteCardButton = document.querySelector("#deleteCardButton");
-export const formButton = document.querySelectorAll(".form__button");
 export const popupEdit = document.querySelector("#popupEdit");
 export const popupAdd = document.querySelector("#popupAdd");
 export const editForm = document.querySelector("#editForm");
@@ -29,7 +27,7 @@ export const cardsList = document.querySelector(".cards__list");
 export const profileName = document.querySelector(".profile__name");
 export const profileProf = document.querySelector(".profile__subtitle");
 
-export const PicterCards = [
+export const picterCards = [
   {
     name: 'Сахалин',
     link: 'https://putpostrane.ru/wp-content/uploads/2021/07/2021-07-09_16-08-54.png'

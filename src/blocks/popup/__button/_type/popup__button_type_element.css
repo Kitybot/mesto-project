@@ -9,7 +9,7 @@
   height: 20px;
   position: absolute;
   right: 0;
-  top: -36px;
+  top: -90px;
   background-position: center;
   background-color: #000;
 }
@@ -18,6 +18,6 @@
       width: 32px;
       height: 32px;
       right: -40px;
-      top: -40px;
+      top: -90px;
     }
 }
