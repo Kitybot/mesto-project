@@ -32,14 +32,13 @@ const picterCards = [
   cardElement.querySelector('.pipi__title').textContent = name;
   cardElement.querySelector('.pipi__image').src = link;
   cardElement.alt = name;
-  cardElement.querySelector('.pipi__button').addEventListener('sumbit', function (evt) {
+  cardElement.querySelector('.pipi__button').addEventListener('click', function (evt) {
     evt.target.classList.toggle('pipi__button_live');
   });
   cardElement.querySelector('.pipi__remove').addEventListener('click', function () {
-    const meme = document.querySelector('.pipi');
     cardElement.remove();
   });
-  cardElement.addEventListener('sumbit', function () {
+  cardElement.addEventListener('click', function () {
     showCard(name, link);
     openPopup(popupPic);
   });
