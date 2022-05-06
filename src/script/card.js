@@ -38,7 +38,7 @@ const picterCards = [
   cardElement.querySelector('.pipi__remove').addEventListener('click', function () {
     cardElement.remove();
   });
-  cardElement.addEventListener('click', function () {
+  cardElement.querySelector('.pipi__image').addEventListener('click', function () {
     showCard(name, link);
     openPopup(popupPic);
   });

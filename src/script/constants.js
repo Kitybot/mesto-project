@@ -28,6 +28,10 @@ export const cardsList = document.querySelector(".cards__list");
 export const profileName = document.querySelector(".profile__name");
 export const profileProf = document.querySelector(".profile__subtitle");
 
+
+
+
+
 export const picterCards = [
   {
     name: 'Сахалин',
