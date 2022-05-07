@@ -1,6 +1,6 @@
 .profile__container {
-  display: grid;
-  grid-template-columns: 27% 56% 17%;
+  display: grid;   
+ grid-template-columns: 1fr 1.7fr .5fr;
   grid-template-rows: 60% 40%;
 }
 
