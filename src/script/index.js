@@ -20,12 +20,10 @@ editButton.addEventListener('click', () => {
   fillProfileInputs();
   openPopup(popupProfile);
 });
-closeButtonProfile.addEventListener('click', () => closePopup(popupProfile));
 
 profileform.addEventListener('submit', handleSubmitProfileForm);
 addButton.addEventListener('click', () => {
   openPopup(popupCard);
 });
-closeButtonCard.addEventListener('click', () => closePopup(popupCard));
 
 

@@ -15,7 +15,6 @@ export const elementContainer = content.querySelector('.element__container');
 export const cardTemplate = document.querySelector('#pipi__template').content;
 export const cardForm = document.getElementById('add_card');
 export const closeButtonCard = document.querySelector('#close_popupCard');
-export const cardImage = document.querySelector('.pipi__image');
 export const popups = document.querySelectorAll(".popup");
 export const popupDeleteCard = document.querySelector("#popupDeleteCard");
 export const deleteCardButton = document.querySelector("#deleteCardButton");
@@ -27,10 +26,6 @@ export const cardSaveButtom = cardForm.querySelector('.button');
 export const cardsList = document.querySelector(".cards__list");
 export const profileName = document.querySelector(".profile__name");
 export const profileProf = document.querySelector(".profile__subtitle");
-
-
-
-
 
 export const picterCards = [
   {
