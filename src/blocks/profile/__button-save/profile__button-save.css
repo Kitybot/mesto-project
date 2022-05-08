@@ -1,0 +1,21 @@
+.profile__button-save{
+    background-image: url(../Users/nick3/Documents/GitHub/mesto-project/src/image/Vector.png);
+  background-repeat: no-repeat;
+  background-color: (0, 0, 0, 0, 8);
+  background-position: center;
+  background-size: 20%;
+  opacity: 0;
+  padding: 0;
+  border: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.3s linear;
+  position: absolute;
+  cursor: pointer;
+}
+
+.profile__button-save:hover {
+  opacity: 1;
+}

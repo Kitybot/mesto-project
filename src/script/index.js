@@ -1,9 +1,22 @@
 import '../pages/index.css';
 import { enableValidation} from "./validations.js";
-import { popupProfile, editButton, addButton, closeButtonProfile, profileInput, profInput, profileform, closeButtonCard, nameProfile, profProfile, popupCard,validationSettings, avatarForm, profAvatar } from "./constants";
+import { popupProfile, editButton, addButton, profileInput, profInput, profileform, nameProfile, profProfile, popupCard,validationSettings, avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar } from "./constants";
 import {  openPopup, closePopup } from "./modal.js";
 import { addEventListener } from "./card.js";
 enableValidation(validationSettings);
+
+export function editAvatarPic() {
+  const avatarLink = avatarInput.value;
+  renderProfileLoading(true, avatarForm);
+  editAvatarProfile(avatarLink)
+  .then(responseCheck)
+  .then(res => {
+    profileAvatar.src = res.avatar;
+    disabledSaveButton(avatarSaveform);
+    avatarForm.reset();
+    closePopup(modalAvatar);
+}
+  )}
 
 function fillProfileInputs() {
   nameProfile.value = profileInput.textContent;
