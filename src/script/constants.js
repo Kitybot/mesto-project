@@ -31,9 +31,9 @@ export const editButton = content.querySelector('.profile__edit_type_button');
 export const addButton = content.querySelector('.profile__add_type_button');
 
 export const avatarForm = document.getElementById('edit_avatar');
-export const editAvatarButton = content.querySelector('.profile__avatar-edit');
+export const editAvatarButton = document.querySelector('.profile__button-save');
 export const profileAvatar = document.querySelector('.profile__avatar');
-export const avatarSaveform = avatarForm.querySelector('#avatar-button-save');
+export const avatarSaveform = document.querySelector('#avatar-button-save');
 export const avatarInput = document.getElementById('link-avatar_pic');
 
 export const picterCards = [

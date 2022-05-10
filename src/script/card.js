@@ -35,6 +35,7 @@ const cardImage = cardElement.querySelector('.pipi__image');
 cardElement.querySelector('.pipi__title').textContent = name;
 cardImage.src = link;
 cardImage.alt = name;
+
 cardElement.querySelector('.pipi__button').addEventListener('click', function (evt) {
   evt.target.classList.toggle('pipi__button_live');
 });
@@ -63,6 +64,7 @@ cardForm.addEventListener('submit', function (evt) {
 function addCard(container, cardElement) {
   container.prepend(cardElement);
 }
+
 function showCard(popupName, popupLink) {
   openPopup(popupPic);
   popupHeading.textContent = popupName;

@@ -1,8 +1,8 @@
 .profile__button-save{
-    background-image: url(../Users/nick3/Documents/GitHub/mesto-project/src/image/Vector.png);
+  background-image: url(../../../image/Vector.png);
   background-repeat: no-repeat;
   background-color: (0, 0, 0, 0, 8);
-  background-position: center;
+  background-position: 50%;
   background-size: 20%;
   opacity: 0;
   padding: 0;
