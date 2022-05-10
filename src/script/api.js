@@ -81,7 +81,7 @@ export const responseCheck = res => {
     })
   };
   
-  export const deleteCard = (cardid) => {
+  export const deleteCard = (card) => {
     return fetch('https://nomoreparties.co/v1/plus-cohort-9/cards/${cardid}', {
       method: 'DELETE',
       headers: {
@@ -91,7 +91,7 @@ export const responseCheck = res => {
     })
   };
   
-  export const addLikeCard = (cardid) => {
+  export const addLikeCard = (cardId) => {
     return fetch('https://nomoreparties.co/v1/plus-cohort-9/cards/likes/${cardid}', {
       method: 'PUT',
       headers: {
@@ -101,7 +101,7 @@ export const responseCheck = res => {
     })
   };
   
-  export const deleteLikeCard = (cardid) => {
+  export const deleteLikeCard = (cardId) => {
     return fetch('https://nomoreparties.co/v1/plus-cohort-9/cards/likes/${cardid}', {
       method: 'DELETE',
       headers: {

@@ -24,7 +24,6 @@ export const cardSaveButtom = cardForm.querySelector('.button');
 export const closeButtonProfile = document.querySelector('#close_Profile');
 export const profileform = document.getElementById('edit_profile');
 export const profileName = document.querySelector(".profile__name");
-export const profileProf = document.querySelector(".profile__subtitle");
 export const profileInput = document.querySelector('.profile__title');
 export const profInput = document.querySelector('.profile__subtitle');
 export const editButton = content.querySelector('.profile__edit_type_button');
