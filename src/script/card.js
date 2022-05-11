@@ -1,6 +1,8 @@
-import { cardForm, cardTemplate, popupPic, elementContainer, popupCard, cardSaveButtom} from "./constants";
+import { from } from "core-js/core/array";
+import { cardForm, cardTemplate, popupPic, elementContainer, popupCard, pipiSaveButtom} from "./constants";
 import { closePopup, openPopup } from "./modal.js";
 import { disabledButtonSave } from "./utils";
+import { deleteCard, deleteLikeCard, addLikeCard  } from "./api";
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
 const picterCards = [
@@ -29,19 +31,28 @@ const picterCards = [
     link: 'https://avatars.mds.yandex.net/get-zen_doc/3323369/pub_5f319fe690fc736b4109d4d0_5f31a7a2be8c144e5df29dd3/scale_1200'
   },
 ];
-export function createCard(name, link) {
+export function createCard(name, link, cardId, likesCount) {
 const cardElement = cardTemplate.querySelector('.pipi').cloneNode(true);
 const cardImage = cardElement.querySelector('.pipi__image');
+const cardLikeButton = cardElement.querySelector('#like_pipi');
+const cardLikeCount = cardElement.querySelector('.pipi__count-likes');
 cardElement.querySelector('.pipi__title').textContent = name;
 cardImage.src = link;
 cardImage.alt = name;
+cardLikeCount.textContent = likesCount;
 
 cardElement.querySelector('.pipi__button').addEventListener('click', function (evt) {
   evt.target.classList.toggle('pipi__button_live');
 });
 cardElement.querySelector('.pipi__remove').addEventListener('click', function () {
-  cardElement.remove();
-});
+  deleteCard(cardId)
+    .then(responseCheckWithNoData => {
+      cardElement.remove();
+      console.log(responseCheckWithNoData);
+    })
+    .catch(err => console.error(err));
+  });
+
 cardImage.addEventListener('click', function () {
   showCard(name, link);
   openPopup(popupPic);
@@ -57,7 +68,7 @@ cardForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
   addCard(elementContainer, createCard(cardForm.name.value, cardForm.link.value));
   cardForm.reset();
-  disabledButtonSave(cardSaveButtom);
+  disabledButtonSave(pipiSaveButtom);
   closePopup(popupCard);
 });
 
@@ -70,4 +81,24 @@ function showCard(popupName, popupLink) {
   popupHeading.textContent = popupName;
   popupImage.src = popupLink;
   popupImage.alt = popupName;
+}
+
+export function clickLikeButton(cardLikeButton, cardLikeCount, cardId) {
+  if (cardLikeButton.classList.contains('pipi__button_live')) {
+    deleteLikeCard(cardId)
+    .then(responseCheck)
+    .then(res => {
+      cardLikeCount.textContent = res.likes.length;
+      cardLikeButton.classList.remove('pipi__button_live');
+    })
+    .catch(err => console.error(err))
+  } else {
+    addLikeCard(cardId)
+    .then(responseCheck)
+    .then(res => {
+      cardLikeCount.textContent = res.likes.length;
+      cardLikeButton.classList.add('pipi__button_live');
+    })
+    .catch(err => console.error(err))
+  }
 }

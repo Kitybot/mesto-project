@@ -26,7 +26,7 @@ Promise.all([getInfoProfile(), getInitialCards()])
   })
   .catch(err => {console.error(err)}); 
 
-function handleProfileFormSubmit() {
+export function handleSubmitProfileForm() {
   renderProfileLoading(true, profileform);
   editInfoProfile(profileInput, profInput)
     .then(responseCheck)

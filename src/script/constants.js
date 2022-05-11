@@ -19,7 +19,8 @@ export const popupEdit = document.querySelector("#popupEdit");
 export const popupAdd = document.querySelector("#popupAdd");
 export const editForm = document.querySelector("#editForm");
 export const addForm = document.querySelector("#addForm");
-export const cardSaveButtom = cardForm.querySelector('.button');
+export const pipiSaveButtom = cardForm.querySelector('.button');
+export const pipiLikeButtom = document.querySelector('#like_pipi');
 
 export const closeButtonProfile = document.querySelector('#close_Profile');
 export const profileform = document.getElementById('edit_profile');
