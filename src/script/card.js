@@ -1,4 +1,3 @@
-import { from } from "core-js/core/array";
 import { cardForm, cardTemplate, popupPic, elementContainer, popupCard, pipiSaveButtom} from "./constants";
 import { closePopup, openPopup } from "./modal.js";
 import { disabledButtonSave } from "./utils";
@@ -31,7 +30,7 @@ const picterCards = [
     link: 'https://avatars.mds.yandex.net/get-zen_doc/3323369/pub_5f319fe690fc736b4109d4d0_5f31a7a2be8c144e5df29dd3/scale_1200'
   },
 ];
-export function createCard(name, link, cardId, likesCount) {
+export function createCard(name, link, cardId, likesCount, isLiked) {
 const cardElement = cardTemplate.querySelector('.pipi').cloneNode(true);
 const cardImage = cardElement.querySelector('.pipi__image');
 const cardLikeButton = cardElement.querySelector('#like_pipi');
@@ -41,9 +40,11 @@ cardImage.src = link;
 cardImage.alt = name;
 cardLikeCount.textContent = likesCount;
 
-cardElement.querySelector('.pipi__button').addEventListener('click', function (evt) {
-  evt.target.classList.toggle('pipi__button_live');
+if (isLiked) cardLikeButton.classList.add('pipi__button_live');
+cardLikeButton.addEventListener('click', (evt) => {
+  clickLikeButton(cardLikeButton, cardLikeCount, cardId);
 });
+
 cardElement.querySelector('.pipi__remove').addEventListener('click', function () {
   deleteCard(cardId)
     .then(responseCheckWithNoData => {

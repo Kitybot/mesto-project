@@ -26,7 +26,7 @@ Promise.all([getInfoProfile(), getInitialCards()])
   })
   .catch(err => {console.error(err)}); 
 
-export function handleSubmitProfileForm() {
+ function handleSubmitProfileForm() {
   renderProfileLoading(true, profileform);
   editInfoProfile(profileInput, profInput)
     .then(responseCheck)
@@ -34,7 +34,7 @@ export function handleSubmitProfileForm() {
       profileInput.textContent = res.name;
       profInput.textContent = res.about;
       disabledButtonSave(profileSaveButtom);
-      closePopup(modalProfile);
+      closePopup(popupProfile);
     })
     .catch(err => console.error(err))
     .finally(() => {
@@ -61,12 +61,6 @@ export function handleSubmitProfileForm() {
 function fillProfileInputs() {
   nameProfile.value = profileInput.textContent;
   profProfile.value = profInput.textContent;
-}
-function handleSubmitProfileForm(evt) {
-  evt.preventDefault();
-  profileInput.textContent = nameProfile.value;
-  profInput.textContent = profProfile.value;
-  closePopup(popupProfile);
 }
 
 editButton.addEventListener('click', () => {
