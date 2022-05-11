@@ -1,15 +1,11 @@
 .profile__avatar {
-  border-radius: 50%;
-  overflow: hidden;
-  grid-row-start: 1;
-  grid-row-end: 3;
-  width: 150px;
-  height: 140px;
+  min-width: 100%;
+  min-height: 100%;
   object-fit: cover;
 }
 
-@media screen and (max-width: 768px) {
-  .profile__avatar{
-    grid-row-end: 2;
+@media screen and (min-width: 767px) {
+  .profile__avatar {
+    margin: 0;
   }
 }
