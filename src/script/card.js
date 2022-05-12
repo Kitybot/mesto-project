@@ -39,6 +39,7 @@ cardElement.querySelector('.pipi__title').textContent = name;
 cardImage.src = link;
 cardImage.alt = name;
 
+
 if (isLiked) cardLikeButton.classList.add('pipi__button_live');
 cardLikeButton.addEventListener('click', (evt) => {
   clickLikeButton(cardLikeButton, cardLikeCount, cardid);
@@ -87,7 +88,7 @@ export function clickLikeButton(cardLikeButton, cardLikeCount, cardid) {
       cardLikeCount.textContent = res.likes.length;
       cardLikeButton.classList.remove('pipi__button_live');
     })
-    .catch(err => console.error(err))
+    .catch(err => console.log(err))
   } else {
     addLikeCard(cardid)
     .then(responseCheck)
@@ -95,6 +96,6 @@ export function clickLikeButton(cardLikeButton, cardLikeCount, cardid) {
       cardLikeCount.textContent = res.likes.length;
       cardLikeButton.classList.add('pipi__button_live');
     })
-    .catch(err => console.error(err))
+    .catch(err => console.log(err))
   }
 }

@@ -73,7 +73,7 @@ export const responseCheck = res => {
   };
   
   export const deleteCard = (cardid) => {
-    return fetch('https://nomoreparties.co/v1/plus-cohort-9/cards/cardid', {
+    return fetch('https://nomoreparties.co/v1/plus-cohort-9/cards/${cardid}', {
       method: 'DELETE',
       headers: {
         authorization: '171327d0-b72a-4b48-9571-ee232ef250b0',
@@ -83,7 +83,7 @@ export const responseCheck = res => {
   };
   
   export const addLikeCard = (cardid) => {
-    return fetch('https://nomoreparties.co/v1/plus-cohort-9/cards/likes/cardid', {
+    return fetch('https://nomoreparties.co/v1/plus-cohort-9/cards/likes/${cardid}', {
       method: 'PUT',
       headers: {
         authorization: '171327d0-b72a-4b48-9571-ee232ef250b0',
@@ -93,7 +93,7 @@ export const responseCheck = res => {
   };
   
   export const deleteLikeCard = (cardid) => {
-    return fetch('https://nomoreparties.co/v1/plus-cohort-9/cards/likes/cardid', {
+    return fetch('https://nomoreparties.co/v1/plus-cohort-9/cards/likes/${cardid}', {
       method: 'DELETE',
       headers: {
         authorization: '171327d0-b72a-4b48-9571-ee232ef250b0',

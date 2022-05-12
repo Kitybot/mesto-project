@@ -8,6 +8,7 @@ import {editAvatarProfile, responseCheck , editInfoProfile , getInfoProfile, get
 enableValidation(validationSettings);
 
 let userId;
+
 Promise.all([getInfoProfile(), getInitialCards()])
   .then(([userData, cards]) => {
     userId = userData._id;
@@ -81,3 +82,4 @@ avatarForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
   editAvatarPic();
 });
+
