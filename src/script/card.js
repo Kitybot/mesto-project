@@ -38,7 +38,6 @@ const cardLikeCount = cardElement.querySelector('.pipi__count-likes');
 cardElement.querySelector('.pipi__title').textContent = name;
 cardImage.src = link;
 cardImage.alt = name;
-cardLikeCount.textContent = likesCount;
 
 if (isLiked) cardLikeButton.classList.add('pipi__button_live');
 cardLikeButton.addEventListener('click', (evt) => {
