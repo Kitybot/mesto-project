@@ -30,7 +30,7 @@ const picterCards = [
     link: 'https://avatars.mds.yandex.net/get-zen_doc/3323369/pub_5f319fe690fc736b4109d4d0_5f31a7a2be8c144e5df29dd3/scale_1200'
   },
 ];
-export function createCard(name, link, cardId, likesCount, isLiked) {
+export function createCard(name, link, cardid, isLiked) {
 const cardElement = cardTemplate.querySelector('.pipi').cloneNode(true);
 const cardImage = cardElement.querySelector('.pipi__image');
 const cardLikeButton = cardElement.querySelector('#like_pipi');
@@ -41,17 +41,13 @@ cardImage.alt = name;
 
 if (isLiked) cardLikeButton.classList.add('pipi__button_live');
 cardLikeButton.addEventListener('click', (evt) => {
-  clickLikeButton(cardLikeButton, cardLikeCount, cardId);
+  clickLikeButton(cardLikeButton, cardLikeCount, cardid);
 });
 
 cardElement.querySelector('.pipi__remove').addEventListener('click', function () {
-  deleteCard(cardId)
-    .then(responseCheckWithNoData => {
+  deleteCard(cardid)
       cardElement.remove();
-      console.log(responseCheckWithNoData);
-    })
-    .catch(err => console.error(err));
-  });
+    });
 
 cardImage.addEventListener('click', function () {
   showCard(name, link);
@@ -83,9 +79,9 @@ function showCard(popupName, popupLink) {
   popupImage.alt = popupName;
 }
 
-export function clickLikeButton(cardLikeButton, cardLikeCount, cardId) {
+export function clickLikeButton(cardLikeButton, cardLikeCount, cardid) {
   if (cardLikeButton.classList.contains('pipi__button_live')) {
-    deleteLikeCard(cardId)
+    deleteLikeCard(cardid)
     .then(responseCheck)
     .then(res => {
       cardLikeCount.textContent = res.likes.length;
@@ -93,7 +89,7 @@ export function clickLikeButton(cardLikeButton, cardLikeCount, cardId) {
     })
     .catch(err => console.error(err))
   } else {
-    addLikeCard(cardId)
+    addLikeCard(cardid)
     .then(responseCheck)
     .then(res => {
       cardLikeCount.textContent = res.likes.length;
