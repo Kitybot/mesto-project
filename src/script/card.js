@@ -1,7 +1,7 @@
 import { cardForm, cardTemplate, popupPic, elementContainer, popupCard, pipiSaveButtom} from "./constants";
 import { closePopup, openPopup } from "./modal.js";
 import { disabledButtonSave } from "./utils";
-import { deleteCard, deleteLikeCard, addLikeCard  } from "./api";
+import { deleteCard, deleteLikeCard, addLikeCard, responseCheck  } from "./api";
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
 const picterCards = [
@@ -72,7 +72,7 @@ cardForm.addEventListener('submit', function (evt) {
   closePopup(popupCard);
 });
 
-function addCard(container, cardElement) {
+export function addCard(container, cardElement) {
   container.prepend(cardElement);
 }
 

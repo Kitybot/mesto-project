@@ -1,8 +1,8 @@
 import '../pages/index.css';
 import { enableValidation} from "./validations.js";
-import { popupProfile, editButton, addButton, profileInput, profInput, profileform, nameProfile, profProfile, popupCard,validationSettings, avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, editAvatarButton} from "./constants";
+import { popupProfile, editButton, addButton, profileInput, profInput, profileform, nameProfile, profProfile, popupCard,validationSettings, avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, editAvatarButton , profilecontainet ,elementContainer} from "./constants";
 import {  openPopup, closePopup } from "./modal.js";
-import { addEventListener } from "./card.js";
+import { addEventListener, createCard, addCard} from "./card.js";
 import { disabledButtonSave, renderProfileLoading } from "./utils";
 import {editAvatarProfile, responseCheck , editInfoProfile , getInfoProfile, getInitialCards} from "./api"
 enableValidation(validationSettings);
@@ -36,7 +36,7 @@ Promise.all([getInfoProfile(), getInitialCards()])
       disabledButtonSave(profileSaveButtom);
       closePopup(popupProfile);
     })
-    .catch(err => console.error(err))
+    .catch(err => {console.log(err)})
     .finally(() => {
       renderProfileLoading(false, profileform);
     });
@@ -52,7 +52,7 @@ Promise.all([getInfoProfile(), getInitialCards()])
     avatarForm.reset();
     closePopup(modalAvatar);
   })
-    .catch(err => console.error(err))
+    .catch(err => {console.log(err)})
     .finally(() => {
       renderProfileLoading(false, avatarForm);
     });
@@ -73,7 +73,7 @@ addButton.addEventListener('click', () => {
   openPopup(popupCard);
 });
 
-editAvatarButton.addEventListener('click', () => {
+profilecontainet.addEventListener('click', () => {
   openPopup(modalAvatar);
 });
 

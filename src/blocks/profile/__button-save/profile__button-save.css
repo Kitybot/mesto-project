@@ -1,5 +1,6 @@
 .profile__button-save {
-  margin: 78px 0 0 19px;
+  margin: 50 0 0 20px;
+  position: absolute;
 }
 
 @media screen and (max-width: 700px) {

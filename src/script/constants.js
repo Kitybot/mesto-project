@@ -29,6 +29,7 @@ export const profileInput = document.querySelector('.profile__title');
 export const profInput = document.querySelector('.profile__subtitle');
 export const editButton = content.querySelector('.profile__edit_type_button');
 export const addButton = content.querySelector('.profile__add_type_button');
+export const profilecontainet = document.querySelector('.profile__avatar-container')
 
 export const avatarForm = document.getElementById('edit_avatar');
 export const editAvatarButton = document.querySelector('.profile__button-save');
