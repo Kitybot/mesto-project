@@ -1,6 +1,6 @@
 import '../pages/index.css';
 import { enableValidation} from "./validations.js";
-import { popupProfile, editButton, addButton, profileInput, profInput, profileform, nameProfile, profProfile, popupCard,validationSettings, avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, editAvatarButton , profilecontainet ,cardContainer} from "./constants";
+import { popupProfile, editButton, addButton, profileInput, profInput, profileform, nameProfile, profProfile, popupCard,validationSettings, avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, profileSaveButtom, profilecontainet ,cardContainer} from "./constants";
 import {  openPopup, closePopup } from "./modal.js";
 import { addEventListener, createCard, addCard} from "./card.js";
 import { disabledButtonSave, renderProfileLoading } from "./utils";

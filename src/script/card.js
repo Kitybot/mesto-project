@@ -1,7 +1,7 @@
-import { cardForm, cardTemplate, popupPic, elementContainer} from "./constants";
+import { cardForm, cardTemplate, popupPic, elementContainer, cardSaveButtom, popupCard} from "./constants";
 import { closePopup, openPopup } from "./modal.js";
-
-import { deleteCard, deleteLikeCard, addLikeCard } from "./api";
+import { renderCardLoading } from "./utils";
+import { deleteCard, deleteLikeCard, addLikeCard, addNewCards } from "./api";
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
 const picterCards = [
@@ -30,7 +30,7 @@ const picterCards = [
     link: 'https://avatars.mds.yandex.net/get-zen_doc/3323369/pub_5f319fe690fc736b4109d4d0_5f31a7a2be8c144e5df29dd3/scale_1200'
   },
 ];
-export function createCard(name, link, cardid, isLiked, likesCount) {
+export function createCard(name, link, cardId, isLiked, likesCount) {
 const cardElement = cardTemplate.querySelector('.pipi').cloneNode(true);
 const cardImage = cardElement.querySelector('.pipi__image');
 const cardLikeButton = cardElement.querySelector('#like_pipi');
@@ -39,15 +39,15 @@ const cardButtonRemove = cardElement.querySelector('.pipi__remove');
 cardElement.querySelector('.pipi__title').textContent = name;
 cardImage.src = link;
 cardImage.alt = name;
-cardLikeCount.number = likesCount;
+cardLikeCount.textContent = likesCount;
 
 if (isLiked) cardLikeButton.classList.add('pipi__button_live');
 cardLikeButton.addEventListener('click', () => {
-  clickLikeButton(cardLikeButton, cardLikeCount, cardid);
+  clickLikeButton(cardLikeButton, cardLikeCount, cardId);
 });
 
 cardButtonRemove.addEventListener('click', () => {
-  deleteCard(cardid)
+  deleteCard(cardId)
   .then(responseCheckWithNoData => {
     cardElement.remove();
     console.log(responseCheckWithNoData);
@@ -94,3 +94,21 @@ export function clickLikeButton(cardLikeButton, cardLikeCount, cardId) {
     .catch(err => console.error(err))
   }
 }
+cardForm.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  renderCardLoading(true, cardForm);
+  const cardName = cardForm.name.value;
+  const cardPic = cardForm.link.value;
+  addNewCards(cardName, cardPic)
+    .then((card) => {
+      addCard(elementContainer, createCard(cardName, cardPic, card._id, 0, false));
+      cardForm.reset();
+      disabledSaveButton(cardSaveButtom)
+      closePopup(popupCard);
+    })
+    .catch(err => console.error(err))
+    .finally(() => {
+      renderCardLoading(false, cardForm);
+    });
+});
+
