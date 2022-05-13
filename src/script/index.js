@@ -30,14 +30,13 @@ Promise.all([getInfoProfile(), getInitialCards()])
  function handleSubmitProfileForm() {
   renderProfileLoading(true, profileform);
   editInfoProfile(profileInput, profInput)
-    .then(responseCheck)
     .then(res => {
       profileInput.textContent = res.name;
       profInput.textContent = res.about;
       disabledButtonSave(profileSaveButtom);
       closePopup(popupProfile);
     })
-    .catch(err => {console.log(err)})
+    .catch(err => {console.error(err)})
     .finally(() => {
       renderProfileLoading(false, profileform);
     });
@@ -46,14 +45,13 @@ Promise.all([getInfoProfile(), getInitialCards()])
   const avatarLink = avatarInput.value;
   renderProfileLoading(true, avatarForm);
   editAvatarProfile(avatarLink)
-  .then(responseCheck)
   .then(res => {
     profileAvatar.src = res.avatar;
     disabledButtonSave(avatarSaveform);
     avatarForm.reset();
     closePopup(modalAvatar);
   })
-    .catch(err => {console.log(err)})
+    .catch(err => {console.error(err)})
     .finally(() => {
       renderProfileLoading(false, avatarForm);
     });

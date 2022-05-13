@@ -83,7 +83,6 @@ function showCard(popupName, popupLink) {
 export function clickLikeButton(cardLikeButton, cardLikeCount, cardid) {
   if (cardLikeButton.classList.contains('pipi__button_live')) {
     deleteLikeCard(cardid)
-    .then(responseCheck)
     .then(res => {
       cardLikeCount.textContent = res.likes.length;
       cardLikeButton.classList.remove('pipi__button_live');
@@ -91,7 +90,6 @@ export function clickLikeButton(cardLikeButton, cardLikeCount, cardid) {
     .catch(err => console.log(err))
   } else {
     addLikeCard(cardid)
-    .then(responseCheck)
     .then(res => {
       cardLikeCount.textContent = res.likes.length;
       cardLikeButton.classList.add('pipi__button_live');
