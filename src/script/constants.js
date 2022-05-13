@@ -37,6 +37,7 @@ export const profileAvatar = document.querySelector('.profile__avatar');
 export const avatarSaveform = document.querySelector('#avatar-button-save');
 export const avatarInput = document.getElementById('link-avatar_pic');
 
+export const cardContainer = document.querySelector('.element__container')
 export const URl = 'https://nomoreparties.co/v1/plus-cohort-9';
 export const token = '171327d0-b72a-4b48-9571-ee232ef250b0';
 

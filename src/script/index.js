@@ -4,7 +4,7 @@ import { popupProfile, editButton, addButton, profileInput, profInput, profilefo
 import {  openPopup, closePopup } from "./modal.js";
 import { addEventListener, createCard, addCard} from "./card.js";
 import { disabledButtonSave, renderProfileLoading } from "./utils";
-import {editAvatarProfile, responseCheck , editInfoProfile , getInfoProfile, getInitialCards} from "./api"
+import {editAvatarProfile, editInfoProfile, getInfoProfile, getInitialCards} from "./api"
 enableValidation(validationSettings);
 
 let userId;
@@ -12,20 +12,21 @@ let userId;
 Promise.all([getInfoProfile(), getInitialCards()])
   .then(([userData, cards]) => {
     userId = userData._id;
-    profileInput.textContent = userData.name;
-    profInput.textContent = userData.about;
+    nameInput.textContent = userData.name;
+    jobInput.textContent = userData.about;
     profileAvatar.src = userData.avatar;
     profileAvatar.alt = `Аватар ${userData.name}`;
     cards.forEach(card => {
       const initialCards = createCard(card.name, card.link, card._id, card.likes.length, card.likes.some(item => item._id === userId));
-      const removeButton = initialCards.querySelector('.pipi__remove');
+      const cardRemoveButton = initialCards.querySelector('.pipi__remove');
       if (card.owner._id !== userId) {
-        removeButton.remove();
+        cardRemoveButton.remove();
       };
-      addCard(elementContainer, initialCards);
+      addCard(cardContainer, initialCards);
     })
   })
-  .catch(err => {console.error(err)}); 
+  .catch(err => {console.error(err)});
+
 
  function handleSubmitProfileForm() {
   renderProfileLoading(true, profileform);

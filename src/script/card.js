@@ -1,7 +1,7 @@
 import { cardForm, cardTemplate, popupPic, elementContainer, popupCard, pipiSaveButtom} from "./constants";
 import { closePopup, openPopup } from "./modal.js";
 import { disabledButtonSave } from "./utils";
-import { deleteCard, deleteLikeCard, addLikeCard, responseCheck  } from "./api";
+import { deleteCard, deleteLikeCard, addLikeCard ,addNewCards} from "./api";
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
 const picterCards = [
@@ -35,6 +35,7 @@ const cardElement = cardTemplate.querySelector('.pipi').cloneNode(true);
 const cardImage = cardElement.querySelector('.pipi__image');
 const cardLikeButton = cardElement.querySelector('#like_pipi');
 const cardLikeCount = cardElement.querySelector('.pipi__count-likes');
+const cardButtonRemove = cardElement.querySelector('.pipi__remove');
 cardElement.querySelector('.pipi__title').textContent = name;
 cardImage.src = link;
 cardImage.alt = name;
@@ -45,10 +46,14 @@ cardLikeButton.addEventListener('click', (evt) => {
   clickLikeButton(cardLikeButton, cardLikeCount, cardid);
 });
 
-cardElement.querySelector('.pipi__remove').addEventListener('click', function () {
+cardButtonRemove.addEventListener('click', () => {
   deleteCard(cardid)
-      cardElement.remove();
-    });
+  .then(responseCheckWithNoData => {
+    cardElement.remove();
+    console.log(responseCheckWithNoData);
+  })
+  .catch(err => console.error(err));
+});
 
 cardImage.addEventListener('click', function () {
   showCard(name, link);
@@ -63,10 +68,18 @@ picterCards.forEach(card => {
 
 cardForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  addCard(elementContainer, createCard(cardForm.name.value, cardForm.link.value));
-  cardForm.reset();
-  disabledButtonSave(pipiSaveButtom);
-  closePopup(popupCard);
+  const cardName = cardForm.name.value;
+  const cardPic = cardForm.link.value;
+  addNewCards(cardName, cardPic)
+    .then((card) => {
+      addCard(cardContainer, createCard(cardName, cardPic, card._id, 0, false));
+      cardForm.reset();
+      disabledSaveButton(pipiSaveButtom)
+      closePopup(popupCard);
+    })
+    .catch(err => console.error(err))
+    .finally(() => {
+    });
 });
 
 export function addCard(container, cardElement) {
