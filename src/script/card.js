@@ -66,22 +66,6 @@ picterCards.forEach(card => {
   addCard(elementContainer, createCard(card.name, card.link));
 });
 
-cardForm.addEventListener('submit', function (evt) {
-  evt.preventDefault();
-  const cardName = cardForm.name.value;
-  const cardPic = cardForm.link.value;
-  addNewCards(cardName, cardPic)
-    .then((card) => {
-      addCard(cardContainer, createCard(cardName, cardPic, card._id, 0, false));
-      cardForm.reset();
-      disabledSaveButton(pipiSaveButtom)
-      closePopup(popupCard);
-    })
-    .catch(err => console.error(err))
-    .finally(() => {
-    });
-});
-
 export function addCard(container, cardElement) {
   container.prepend(cardElement);
 }
@@ -93,20 +77,20 @@ function showCard(popupName, popupLink) {
   popupImage.alt = popupName;
 }
 
-export function clickLikeButton(cardLikeButton, cardLikeCount, cardid) {
+export function clickLikeButton(cardLikeButton, cardLikeCount, cardId) {
   if (cardLikeButton.classList.contains('pipi__button_live')) {
-    deleteLikeCard(cardid)
+    deleteLikeCard(cardId)
     .then(res => {
       cardLikeCount.textContent = res.likes.length;
       cardLikeButton.classList.remove('pipi__button_live');
     })
     .catch(err => console.log(err))
   } else {
-    addLikeCard(cardid)
+    addLikeCard(cardId)
     .then(res => {
       cardLikeCount.textContent = res.likes.length;
       cardLikeButton.classList.add('pipi__button_live');
     })
-    .catch(err => console.log(err))
+    .catch(err => console.error(err))
   }
 }

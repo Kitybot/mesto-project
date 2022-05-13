@@ -34,7 +34,7 @@ export const profilecontainet = document.querySelector('.profile__avatar-contain
 export const avatarForm = document.getElementById('edit_avatar');
 export const editAvatarButton = document.querySelector('.profile__button-save');
 export const profileAvatar = document.querySelector('.profile__avatar');
-export const avatarSaveform = document.querySelector('#avatar-button-save');
+export const avatarSaveform = avatarForm.querySelector('#avatar-button-save');
 export const avatarInput = document.getElementById('link-avatar_pic');
 
 export const cardContainer = document.querySelector('.element__container')

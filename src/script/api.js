@@ -24,6 +24,10 @@ export const checkResponseWithNoData = res => {
 
 export const getInfoProfile = () => {
   return fetch(`${URl}/users/me`, {
+    headers: {
+      authorization: `${token}`,
+      'Content-Type': 'application/json'
+    }
   })
   .then(checkResponse)
 };
@@ -35,6 +39,10 @@ export const editInfoProfile = (nameProfile, profProfile) => {
       name: nameProfile.value,
       about: profProfile.value
     }),
+    headers: {
+      authorization: `${token}`,
+      'Content-Type': 'application/json'
+    }
   })
   .then(checkResponse)
 };
@@ -45,12 +53,20 @@ export const editAvatarProfile = (avatarLink) => {
     body: JSON.stringify({
       avatar: avatarLink
     }),
+    headers: {
+      authorization: `${token}`,
+      'Content-Type': 'application/json'
+    }
   })
   .then(checkResponse)
 };
 
 export const getInitialCards = () => {
   return fetch(`${URl}/cards`, {
+    headers: {
+      authorization: `${token}`,
+      'Content-Type': 'application/json'
+    }
   })
   .then(checkResponse)
 };
@@ -61,6 +77,10 @@ export const addNewCards = (name, link) => {
     body: JSON.stringify({
       name, link
     }),
+    headers: {
+      authorization: `${token}`,
+      'Content-Type': 'application/json'
+    }
   })
   .then(checkResponse)
 };
@@ -68,6 +88,10 @@ export const addNewCards = (name, link) => {
 export const deleteCard = (cardid) => {
   return fetch(`${URl}/cards/${cardid}`, {
     method: 'DELETE',
+    headers: {
+      authorization: `${token}`,
+      'Content-Type': 'application/json'
+    }
   })
   .then(checkResponse)
 };
@@ -75,6 +99,10 @@ export const deleteCard = (cardid) => {
 export const addLikeCard = (cardid) => {
   return fetch(`${URl}/cards/likes/${cardid}`, {
     method: 'PUT',
+    headers: {
+      authorization: `${token}`,
+      'Content-Type': 'application/json'
+    }
   })
   .then(checkResponse)
 };
@@ -82,6 +110,10 @@ export const addLikeCard = (cardid) => {
 export const deleteLikeCard = (cardid) => {
   return fetch(`${URl}/cards/likes/${cardid}`, {
     method: 'DELETE',
+    headers: {
+      authorization: `${token}`,
+      'Content-Type': 'application/json'
+    }
   })
   .then(checkResponse)
 };

@@ -1,6 +1,6 @@
 import '../pages/index.css';
 import { enableValidation} from "./validations.js";
-import { popupProfile, editButton, addButton, profileInput, profInput, profileform, nameProfile, profProfile, popupCard,validationSettings, avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, editAvatarButton , profilecontainet ,elementContainer} from "./constants";
+import { popupProfile, editButton, addButton, profileInput, profInput, profileform, nameProfile, profProfile, popupCard,validationSettings, avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, editAvatarButton , profilecontainet ,cardContainer} from "./constants";
 import {  openPopup, closePopup } from "./modal.js";
 import { addEventListener, createCard, addCard} from "./card.js";
 import { disabledButtonSave, renderProfileLoading } from "./utils";
@@ -12,8 +12,8 @@ let userId;
 Promise.all([getInfoProfile(), getInitialCards()])
   .then(([userData, cards]) => {
     userId = userData._id;
-    nameInput.textContent = userData.name;
-    jobInput.textContent = userData.about;
+    nameProfile.textContent = userData.name;
+    profProfile.textContent = userData.about;
     profileAvatar.src = userData.avatar;
     profileAvatar.alt = `Аватар ${userData.name}`;
     cards.forEach(card => {
