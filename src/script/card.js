@@ -1,6 +1,6 @@
-import { cardForm, cardTemplate, popupPic, elementContainer, cardSaveButtom, popupCard} from "./constants";
+import { cardForm, cardTemplate, popupPic, elementContainer, pipiSaveButtom, popupCard} from "./constants";
 import { closePopup, openPopup } from "./modal.js";
-import { renderCardLoading } from "./utils";
+import { renderCardLoading, disabledButtonSave } from "./utils";
 import { deleteCard, deleteLikeCard, addLikeCard, addNewCards } from "./api";
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
@@ -101,9 +101,9 @@ cardForm.addEventListener('submit', function (evt) {
   const cardPic = cardForm.link.value;
   addNewCards(cardName, cardPic)
     .then((card) => {
-      addCard(elementContainer, createCard(cardName, cardPic, card._id, 0, false));
+      addCard(elementContainer, createCard(cardName, cardPic, card._id, false, 0));
       cardForm.reset();
-      disabledSaveButton(cardSaveButtom)
+      disabledButtonSave(pipiSaveButtom)
       closePopup(popupCard);
     })
     .catch(err => console.error(err))

@@ -17,7 +17,7 @@ Promise.all([getInfoProfile(), getInitialCards()])
     profileAvatar.src = userData.avatar;
     profileAvatar.alt = `Аватар ${userData.name}`;
     cards.forEach(card => {
-      const initialCards = createCard(card.name, card.link, card._id, card.likes.length, card.likes.some(item => item._id === userId));
+      const initialCards = createCard(card.name, card.link, card._id, card.likes.some(item => item._id === userId), card.likes.length);
       const cardRemoveButton = initialCards.querySelector('.pipi__remove');
       if (card.owner._id !== userId) {
         cardRemoveButton.remove();
@@ -32,8 +32,8 @@ Promise.all([getInfoProfile(), getInitialCards()])
   renderProfileLoading(true, profileform);
   editInfoProfile(profileInput, profInput)
     .then(res => {
-      profileInput.textContent = res.name;
-      profInput.textContent = res.about;
+      nameProfile.textContent = res.name;
+      profProfile.textContent = res.about;
       disabledButtonSave(profileSaveButtom);
       closePopup(popupProfile);
     })
