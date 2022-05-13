@@ -75,7 +75,8 @@ export const addNewCards = (name, link) => {
   return fetch(`${URl}/cards`, {
     method: 'POST',
     body: JSON.stringify({
-      name, link
+      name: name,
+      link: link
     }),
     headers: {
       authorization: `${token}`,

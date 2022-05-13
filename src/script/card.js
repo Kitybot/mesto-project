@@ -1,7 +1,7 @@
-import { cardForm, cardTemplate, popupPic, elementContainer, popupCard, pipiSaveButtom} from "./constants";
+import { cardForm, cardTemplate, popupPic, elementContainer} from "./constants";
 import { closePopup, openPopup } from "./modal.js";
-import { disabledButtonSave } from "./utils";
-import { deleteCard, deleteLikeCard, addLikeCard ,addNewCards} from "./api";
+
+import { deleteCard, deleteLikeCard, addLikeCard } from "./api";
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
 const picterCards = [
@@ -30,19 +30,19 @@ const picterCards = [
     link: 'https://avatars.mds.yandex.net/get-zen_doc/3323369/pub_5f319fe690fc736b4109d4d0_5f31a7a2be8c144e5df29dd3/scale_1200'
   },
 ];
-export function createCard(name, link, cardid, isLiked) {
+export function createCard(name, link, cardid, isLiked, likesCount) {
 const cardElement = cardTemplate.querySelector('.pipi').cloneNode(true);
 const cardImage = cardElement.querySelector('.pipi__image');
 const cardLikeButton = cardElement.querySelector('#like_pipi');
-const cardLikeCount = cardElement.querySelector('.pipi__count-likes');
+const cardLikeCount = cardElement.querySelector('.pipi__count-like');
 const cardButtonRemove = cardElement.querySelector('.pipi__remove');
 cardElement.querySelector('.pipi__title').textContent = name;
 cardImage.src = link;
 cardImage.alt = name;
-
+cardLikeCount.number = likesCount;
 
 if (isLiked) cardLikeButton.classList.add('pipi__button_live');
-cardLikeButton.addEventListener('click', (evt) => {
+cardLikeButton.addEventListener('click', () => {
   clickLikeButton(cardLikeButton, cardLikeCount, cardid);
 });
 

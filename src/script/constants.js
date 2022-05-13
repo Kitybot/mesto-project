@@ -12,6 +12,7 @@ export const profProfile = document.getElementById('about');
 export const elementContainer = content.querySelector('.element__container');
 export const cardTemplate = document.querySelector('#pipi__template').content;
 export const cardForm = document.getElementById('add_card');
+export const cardSaveButtom = cardForm.querySelector('#card-button-save');
 export const closeButtonCard = document.querySelector('#close_popupCard');
 export const popupDeleteCard = document.querySelector("#popupDeleteCard");
 export const deleteCardButton = document.querySelector("#deleteCardButton");
@@ -20,7 +21,7 @@ export const popupAdd = document.querySelector("#popupAdd");
 export const editForm = document.querySelector("#editForm");
 export const addForm = document.querySelector("#addForm");
 export const pipiSaveButtom = cardForm.querySelector('.button');
-export const pipiLikeButtom = document.querySelector('#like_pipi');
+
 
 export const closeButtonProfile = document.querySelector('#close_Profile');
 export const profileform = document.getElementById('edit_profile');
@@ -30,6 +31,7 @@ export const profInput = document.querySelector('.profile__subtitle');
 export const editButton = content.querySelector('.profile__edit_type_button');
 export const addButton = content.querySelector('.profile__add_type_button');
 export const profilecontainet = document.querySelector('.profile__avatar-container')
+export const profileSaveButtom = profileform.querySelector('#profile-button-save');
 
 export const avatarForm = document.getElementById('edit_avatar');
 export const editAvatarButton = document.querySelector('.profile__button-save');
