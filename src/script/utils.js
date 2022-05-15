@@ -4,7 +4,7 @@ export function disabledButtonSave(button) {
     button.classList.add(validationSettings.buttonClass);
     button.setAttribute('disabled', 'true');
 };
-export function renderCardLoading(isLoading, form) {
+export function renderCardLoading(isLoading, form , buttonText='Сохранить...') {
     if (isLoading) {
       form.querySelector(
         validationSettings.buttonSelector

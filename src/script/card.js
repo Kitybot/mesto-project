@@ -62,9 +62,6 @@ cardImage.addEventListener('click', function () {
 
 return cardElement;
 }
-picterCards.forEach(card => {
-  addCard(elementContainer, createCard(card.name, card.link));
-});
 
 export function addCard(container, cardElement) {
   container.prepend(cardElement);
