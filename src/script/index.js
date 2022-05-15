@@ -3,7 +3,7 @@ import { enableValidation} from "./validations.js";
 import { popupProfile, editButton, addButton, profileInput, profInput, profileform, nameProfile, profProfile, popupCard,validationSettings, avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, profileSaveButtom, profilecontainet ,cardContainer} from "./constants";
 import {  openPopup, closePopup } from "./modal.js";
 import { addEventListener, createCard, addCard} from "./card.js";
-import { disabledButtonSave, renderProfileLoading } from "./utils";
+import { disabledButtonSave, renderLoading } from "./utils";
 import {editAvatarProfile, editInfoProfile, getInfoProfile, getInitialCards} from "./api"
 enableValidation(validationSettings);
 
@@ -29,7 +29,7 @@ Promise.all([getInfoProfile(), getInitialCards()])
 
 
  function handleSubmitProfileForm() {
-  renderProfileLoading(true, profileform);
+  renderLoading(true, profileform);
   editInfoProfile(profileInput, profInput)
     .then(res => {
       nameProfile.textContent = res.name;
@@ -39,12 +39,12 @@ Promise.all([getInfoProfile(), getInitialCards()])
     })
     .catch(err => {console.error(err)})
     .finally(() => {
-      renderProfileLoading(false, profileform);
+      renderLoading(false, profileform);
     });
 }
  function editAvatarPic() {
   const avatarLink = avatarInput.value;
-  renderProfileLoading(true, avatarForm);
+  renderLoading(true, avatarForm);
   editAvatarProfile(avatarLink)
   .then(res => {
     profileAvatar.src = res.avatar;
@@ -54,7 +54,7 @@ Promise.all([getInfoProfile(), getInitialCards()])
   })
     .catch(err => {console.error(err)})
     .finally(() => {
-      renderProfileLoading(false, avatarForm);
+      renderLoading(false, avatarForm);
     });
 };
 

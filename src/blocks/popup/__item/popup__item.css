@@ -24,9 +24,7 @@
 .popup__item:focus {
   outline: none;
 }
-.popup__item:invalid{
-  border-bottom-color: red;
-}
+
 .popup__item:valid{
   border: 1px solid green;
 }

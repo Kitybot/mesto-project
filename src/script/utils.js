@@ -4,25 +4,11 @@ export function disabledButtonSave(button) {
     button.classList.add(validationSettings.buttonClass);
     button.setAttribute('disabled', 'true');
 };
-export function renderCardLoading(isLoading, form , buttonText='Сохранить...') {
+export function renderLoading(isLoading, form) {
+  const button =  form.querySelector(validationSettings.buttonSelector);
     if (isLoading) {
-      form.querySelector(
-        validationSettings.buttonSelector
-      ).textContent = 'Сохранение...';
+     button.textContent = 'Сохранить...';
     } else {
-      form.querySelector(
-        validationSettings.buttonSelector
-      ).textContent = 'Создать';
-    }
-}
-export function renderProfileLoading(isLoading, form) {
-    if (isLoading) {
-      form.querySelector(
-        validationSettings.buttonSelector
-      ).textContent = 'Сохранение...';
-    } else {
-      form.querySelector(
-        validationSettings.buttonSelector
-      ).textContent = 'Сохранить';
+     button.textContent = 'Создать';
     }
 }
