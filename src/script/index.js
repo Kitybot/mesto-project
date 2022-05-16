@@ -59,8 +59,8 @@ Promise.all([getInfoProfile(), getInitialCards()])
 };
 
 function fillProfileInputs() {
-  nameProfile.value = profileInput.textContent;
-  profProfile.value = profInput.textContent;
+  profileInput.value = nameProfile.textContent;
+  profInput.value = profProfile.textContent;
 }
 
 editButton.addEventListener('click', () => {

@@ -9,6 +9,6 @@ export function renderLoading(isLoading, form) {
     if (isLoading) {
      button.textContent = 'Сохранить...';
     } else {
-     button.textContent = 'Создать';
+     button.textContent = 'Сохранить';
     }
 }
