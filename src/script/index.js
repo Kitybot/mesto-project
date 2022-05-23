@@ -6,6 +6,7 @@ import { addEventListener, createCard, addCard} from "./card.js";
 import { disabledButtonSave, renderLoading } from "./utils";
 import {editAvatarProfile, editInfoProfile, getInfoProfile, getInitialCards} from "./Api";
 import Api from "./Api";
+import Card from './card';
 enableValidation(validationSettings);
 
 let userId;
@@ -18,7 +19,38 @@ export const api = new Api({
   }
 }); 
 
+const card = new Card(
+  {
+    selector: 'pipi__template',
 
+    clickLikeButton: (cardLikeButton, cardLikeCount, cardId) => {
+      if (cardLikeButton.classList.contains('pipi__button_live')) {
+        api.deleteLikeCard(cardId)
+          .then(res => {
+            cardLikeCount.textContent = res.likes.length;
+            cardLikeButton.classList.remove('pipi__button_live');
+          })
+          .catch(err => console.log(err))
+      } else {
+        api.addLikeCard(cardId)
+          .then(res => {
+            cardLikeCount.textContent = res.likes.length;
+            cardLikeButton.classList.add('pipi__button_live');
+          })
+          .catch(err => console.error(err))
+      }
+    },
+
+    deleteCard: (cardId, cardElement) => {
+      api.deleteCard(cardId)
+        .then(responseCheckWithNoData => {
+          cardElement.remove();
+          console.log(responseCheckWithNoData);
+        })
+        .catch(err => console.error(err));
+    }
+  }
+)
 
 
 Promise.all([api.getInfoProfile(), api.getInitialCards()])

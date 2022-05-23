@@ -7,10 +7,23 @@ const popupHeading = document.querySelector(".popup__heading");
 import {api} from './index';
  
 export default class Card {
-  constructor({selector}){
+
+  constructor({selector, clickLikeButton, deleteCard}) {
     this._selector = selector;
+    this._clickLikeButton = clickLikeButton;
+    this._deleteCard = deleteCard;
   } 
-   createCard(name, link, cardId, isLiked, likesCount) {
+  
+  _setEventListener(cardLikeButton, cardLikeCount, cardId, cardElement) {
+    cardLikeButton.addEventListener('click', () => {
+      this._clickLikeButton(cardLikeButton, cardLikeCount, cardId);
+    });
+    cardButtonRemove.addEventListener('click', () => {
+      this._deleteCard(cardId, cardElement);      
+    });
+  }
+
+  createCard(name, link, cardId, isLiked, likesCount) {
     const cardElement = document.querySelector(`.${this._selector}`).content.querySelector('.pipi').cloneNode(true);
     const cardImage = cardElement.querySelector('.pipi__image');
     const cardLikeButton = cardElement.querySelector('#like_pipi');
@@ -20,12 +33,10 @@ export default class Card {
     cardImage.src = link;
     cardImage.alt = name;
     cardLikeCount.textContent = likesCount;
-
     if (isLiked) cardLikeButton.classList.add('pipi__button_live');
-cardLikeButton.addEventListener('click', () => {
-  clickLikeButton(cardLikeButton, cardLikeCount, cardId);
-});
-}
+    this._setEventListener(cardLikeButton, cardLikeCount, cardId, cardElement);
+
+  }
 }
 
 
@@ -46,7 +57,7 @@ cardLikeCount.textContent = likesCount;*/
 /*if (isLiked) cardLikeButton.classList.add('pipi__button_live');
 cardLikeButton.addEventListener('click', () => {
   clickLikeButton(cardLikeButton, cardLikeCount, cardId);
-});*/
+});
 
 cardButtonRemove.addEventListener('click', () => {
   api.deleteCard(cardId)
@@ -55,7 +66,7 @@ cardButtonRemove.addEventListener('click', () => {
     console.log(responseCheckWithNoData);
   })
   .catch(err => console.error(err));
-});
+});*/
 
 cardImage.addEventListener('click', function () {
   showCard(name, link);
@@ -76,7 +87,7 @@ function showCard(popupName, popupLink) {
   popupImage.alt = popupName;
 }
 
-export function clickLikeButton(cardLikeButton, cardLikeCount, cardId) {
+/*export function clickLikeButton(cardLikeButton, cardLikeCount, cardId) {
   if (cardLikeButton.classList.contains('pipi__button_live')) {
     api.deleteLikeCard(cardId)
     .then(res => {
@@ -92,7 +103,7 @@ export function clickLikeButton(cardLikeButton, cardLikeCount, cardId) {
     })
     .catch(err => console.error(err))
   }
-}
+}*/
 cardForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
   renderLoading(true, cardForm);
