@@ -5,6 +5,14 @@ import { deleteCard, deleteLikeCard, addLikeCard, addNewCards } from "./api";
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
 
+
+import {api} from './index';
+
+
+
+
+
+
 export function createCard(name, link, cardId, isLiked, likesCount) {
 const cardElement = cardTemplate.querySelector('.pipi').cloneNode(true);
 const cardImage = cardElement.querySelector('.pipi__image');
@@ -22,7 +30,7 @@ cardLikeButton.addEventListener('click', () => {
 });
 
 cardButtonRemove.addEventListener('click', () => {
-  deleteCard(cardId)
+  api.deleteCard(cardId)
   .then(responseCheckWithNoData => {
     cardElement.remove();
     console.log(responseCheckWithNoData);
@@ -51,14 +59,14 @@ function showCard(popupName, popupLink) {
 
 export function clickLikeButton(cardLikeButton, cardLikeCount, cardId) {
   if (cardLikeButton.classList.contains('pipi__button_live')) {
-    deleteLikeCard(cardId)
+    api.deleteLikeCard(cardId)
     .then(res => {
       cardLikeCount.textContent = res.likes.length;
       cardLikeButton.classList.remove('pipi__button_live');
     })
     .catch(err => console.log(err))
   } else {
-    addLikeCard(cardId)
+    api.addLikeCard(cardId)
     .then(res => {
       cardLikeCount.textContent = res.likes.length;
       cardLikeButton.classList.add('pipi__button_live');
@@ -71,7 +79,7 @@ cardForm.addEventListener('submit', function (evt) {
   renderLoading(true, cardForm);
   const cardName = cardForm.name.value;
   const cardPic = cardForm.link.value;
-  addNewCards(cardName, cardPic)
+  api.addNewCards(cardName, cardPic)
     .then((card) => {
       addCard(elementContainer, createCard(cardName, cardPic, card._id, false, 0));
       cardForm.reset();

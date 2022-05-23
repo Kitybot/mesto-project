@@ -10,7 +10,7 @@ enableValidation(validationSettings);
 
 let userId;
 
-const api = new Api({
+export const api = new Api({
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-9',
   headers: {
     authorization: '171327d0-b72a-4b48-9571-ee232ef250b0',
@@ -42,7 +42,7 @@ Promise.all([api.getInfoProfile(), api.getInitialCards()])
 
  function handleSubmitProfileForm() {
   renderLoading(true, profileform);
-  editInfoProfile(profileInput, profInput)
+  api.editInfoProfile(profileInput, profInput)
     .then(res => {
       nameProfile.textContent = res.name;
       profProfile.textContent = res.about;
@@ -57,7 +57,7 @@ Promise.all([api.getInfoProfile(), api.getInitialCards()])
  function editAvatarPic() {
   const avatarLink = avatarInput.value;
   renderLoading(true, avatarForm);
-  editAvatarProfile(avatarLink)
+  api.editAvatarProfile(avatarLink)
   .then(res => {
     profileAvatar.src = res.avatar;
     disabledButtonSave(avatarSaveform);
