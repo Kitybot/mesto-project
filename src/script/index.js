@@ -4,12 +4,24 @@ import { popupProfile, editButton, addButton, profileInput, profInput, profilefo
 import {  openPopup, closePopup } from "./modal.js";
 import { addEventListener, createCard, addCard} from "./card.js";
 import { disabledButtonSave, renderLoading } from "./utils";
-import {editAvatarProfile, editInfoProfile, getInfoProfile, getInitialCards} from "./api"
+import {editAvatarProfile, editInfoProfile, getInfoProfile, getInitialCards} from "./api";
+import Api from "./api";
 enableValidation(validationSettings);
 
 let userId;
 
-Promise.all([getInfoProfile(), getInitialCards()])
+const api = new Api({
+  baseUrl: 'https://nomoreparties.co/v1/plus-cohort-9',
+  headers: {
+    authorization: '171327d0-b72a-4b48-9571-ee232ef250b0',
+    'Content-Type': 'application/json'
+  }
+}); 
+
+
+
+
+Promise.all([api.getInfoProfile(), api.getInitialCards()])
   .then(([userData, cards]) => {
     userId = userData._id;
     nameProfile.textContent = userData.name;
