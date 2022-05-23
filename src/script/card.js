@@ -1,19 +1,38 @@
 import { cardForm, cardTemplate, popupPic, elementContainer, pipiSaveButtom, popupCard} from "./constants";
 import { closePopup, openPopup } from "./modal.js";
 import { renderLoading, disabledButtonSave } from "./utils";
-import { deleteCard, deleteLikeCard, addLikeCard, addNewCards } from "./api";
+import { deleteCard, deleteLikeCard, addLikeCard, addNewCards } from "./Api";
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
-
-
 import {api} from './index';
+ 
+export default class Card {
+  constructor({selector}){
+    this._selector = selector;
+  } 
+   createCard(name, link, cardId, isLiked, likesCount) {
+    const cardElement = document.querySelector(`.${this._selector}`).content.querySelector('.pipi').cloneNode(true);
+    const cardImage = cardElement.querySelector('.pipi__image');
+    const cardLikeButton = cardElement.querySelector('#like_pipi');
+    const cardLikeCount = cardElement.querySelector('.pipi__count-like');
+    const cardButtonRemove = cardElement.querySelector('.pipi__remove');
+    cardElement.querySelector('.pipi__title').textContent = name;
+    cardImage.src = link;
+    cardImage.alt = name;
+    cardLikeCount.textContent = likesCount;
+
+    if (isLiked) cardLikeButton.classList.add('pipi__button_live');
+cardLikeButton.addEventListener('click', () => {
+  clickLikeButton(cardLikeButton, cardLikeCount, cardId);
+});
+}
+}
 
 
 
 
 
-
-export function createCard(name, link, cardId, isLiked, likesCount) {
+/*export function createCard(name, link, cardId, isLiked, likesCount) {
 const cardElement = cardTemplate.querySelector('.pipi').cloneNode(true);
 const cardImage = cardElement.querySelector('.pipi__image');
 const cardLikeButton = cardElement.querySelector('#like_pipi');
@@ -22,12 +41,12 @@ const cardButtonRemove = cardElement.querySelector('.pipi__remove');
 cardElement.querySelector('.pipi__title').textContent = name;
 cardImage.src = link;
 cardImage.alt = name;
-cardLikeCount.textContent = likesCount;
+cardLikeCount.textContent = likesCount;*/
 
-if (isLiked) cardLikeButton.classList.add('pipi__button_live');
+/*if (isLiked) cardLikeButton.classList.add('pipi__button_live');
 cardLikeButton.addEventListener('click', () => {
   clickLikeButton(cardLikeButton, cardLikeCount, cardId);
-});
+});*/
 
 cardButtonRemove.addEventListener('click', () => {
   api.deleteCard(cardId)

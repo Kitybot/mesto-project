@@ -4,8 +4,8 @@ import { popupProfile, editButton, addButton, profileInput, profInput, profilefo
 import {  openPopup, closePopup } from "./modal.js";
 import { addEventListener, createCard, addCard} from "./card.js";
 import { disabledButtonSave, renderLoading } from "./utils";
-import {editAvatarProfile, editInfoProfile, getInfoProfile, getInitialCards} from "./api";
-import Api from "./api";
+import {editAvatarProfile, editInfoProfile, getInfoProfile, getInitialCards} from "./Api";
+import Api from "./Api";
 enableValidation(validationSettings);
 
 let userId;
