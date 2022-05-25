@@ -1,18 +1,16 @@
 import '../pages/index.css';
-import { enableValidation} from "./validations.js";
 import { popupProfile,  editButton, addButton, profileInput, profInput, 
-         profileform, nameProfile, profProfile, popupCard,validationSettings, 
+         profileform, nameProfile, profProfile, popupCard, validationSettings, 
          avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, 
          profileSaveButtom, profilecontainet ,cardContainer, popupPic, 
          elementContainer, cardForm, pipiSaveButtom} from "./constants";
 import {  openPopup, closePopup } from "./modal.js";
 import { disabledButtonSave, renderLoading} from "./utils";
-import {editAvatarProfile, editInfoProfile, getInfoProfile, getInitialCards} from "./Api";
 import Api from "./Api";
 import Card from './Card';
+import FormValidator from './FormValidator';
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
-enableValidation(validationSettings);
 
 let userId;
 
@@ -64,6 +62,14 @@ const card = new Card(
   }
 )
 
+const formList = Array.from(document.querySelectorAll(validationSettings.formSelector));
+const avatrFormValidator  = new FormValidator (validationSettings, formList[0]);
+avatrFormValidator.enableValidation();
+const profileFormValidator = new FormValidator (validationSettings, formList[1]);
+profileFormValidator.enableValidation();
+const cardValidator = new FormValidator (validationSettings, formList[2]);
+cardValidator.enableValidation();
+
 function addCard(container, cardElement)  {
   container.prepend(cardElement);
 }  
@@ -86,8 +92,8 @@ cardForm.addEventListener('submit', function (evt) {
     });
 });
 
-const formList = Array.from(document.querySelectorAll(settings.formSelector));
-    formList.forEach((formSelector) => {
+
+formList.forEach((formSelector) => {
       formSelector.addEventListener('submit', function (evt) {
         evt.preventDefault();
       });

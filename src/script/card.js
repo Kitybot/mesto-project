@@ -7,7 +7,8 @@ export default class Card {
     this._showCard = showCard;
   } 
   
-  _setEventListener(cardLikeButton, cardLikeCount, cardId, cardElement, cardButtonRemove, cardImage, name, link) {
+  _setEventListener(cardLikeButton, cardLikeCount, cardId, cardElement, cardButtonRemove, 
+                    cardImage, name, link) {
     cardLikeButton.addEventListener('click', () => {
       this._clickLikeButton(cardLikeButton, cardLikeCount, cardId);
     });
@@ -30,7 +31,8 @@ export default class Card {
     cardImage.alt = name;
     cardLikeCount.textContent = likesCount;
     if (isLiked) cardLikeButton.classList.add('pipi__button_live');
-    this._setEventListener(cardLikeButton, cardLikeCount, cardId, cardElement, cardButtonRemove, cardImage, name, link);
+    this._setEventListener(cardLikeButton, cardLikeCount, cardId, cardElement, 
+                           cardButtonRemove, cardImage, name, link);
     return cardElement;
   }
   
