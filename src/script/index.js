@@ -6,11 +6,10 @@ import { popupProfile,  editButton, addButton, profileInput, profInput,
          profileSaveButtom, profilecontainet ,cardContainer, popupPic, 
          elementContainer, cardForm, pipiSaveButtom} from "./constants";
 import {  openPopup, closePopup } from "./modal.js";
-//import { addEventListener, createCard, addCard} from "./card.js";
 import { disabledButtonSave, renderLoading} from "./utils";
 import {editAvatarProfile, editInfoProfile, getInfoProfile, getInitialCards} from "./Api";
 import Api from "./Api";
-import Card from './card';
+import Card from './Card';
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
 enableValidation(validationSettings);
@@ -86,6 +85,13 @@ cardForm.addEventListener('submit', function (evt) {
       renderLoading(false, cardForm);
     });
 });
+
+const formList = Array.from(document.querySelectorAll(settings.formSelector));
+    formList.forEach((formSelector) => {
+      formSelector.addEventListener('submit', function (evt) {
+        evt.preventDefault();
+      });
+    })
 
 
 Promise.all([api.getInfoProfile(), api.getInitialCards()])
