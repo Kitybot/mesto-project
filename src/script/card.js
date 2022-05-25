@@ -22,13 +22,13 @@ export default class Card {
     cardButtonRemove.addEventListener('click', () => {
       this._deleteCard(cardId, cardElement);      
     });
-    cardImage.addEventListener('click', function () {
+    cardImage.addEventListener('click', () => {
       this._showCard(name, link);
     });
   }
 
   createCard(name, link, cardId, isLiked, likesCount) {
-    const cardElement = document.querySelector(`.${this._selector}`).content.querySelector('.pipi').cloneNode(true);
+    const cardElement = document.querySelector(`#${this._selector}`).content.querySelector('.pipi').cloneNode(true);
     const cardImage = cardElement.querySelector('.pipi__image');
     const cardLikeButton = cardElement.querySelector('#like_pipi');
     const cardLikeCount = cardElement.querySelector('.pipi__count-like');
@@ -39,7 +39,6 @@ export default class Card {
     cardLikeCount.textContent = likesCount;
     if (isLiked) cardLikeButton.classList.add('pipi__button_live');
     this._setEventListener(cardLikeButton, cardLikeCount, cardId, cardElement, cardButtonRemove, cardImage, name, link);
-
     return cardElement;
   }
   

@@ -1,9 +1,13 @@
 import '../pages/index.css';
 import { enableValidation} from "./validations.js";
-import { popupProfile,  editButton, addButton, profileInput, profInput, profileform, nameProfile, profProfile, popupCard,validationSettings, avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, profileSaveButtom, profilecontainet ,cardContainer, popupPic} from "./constants";
+import { popupProfile,  editButton, addButton, profileInput, profInput, 
+         profileform, nameProfile, profProfile, popupCard,validationSettings, 
+         avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, 
+         profileSaveButtom, profilecontainet ,cardContainer, popupPic, 
+         elementContainer, cardForm, pipiSaveButtom} from "./constants";
 import {  openPopup, closePopup } from "./modal.js";
 //import { addEventListener, createCard, addCard} from "./card.js";
-import { disabledButtonSave, renderLoading } from "./utils";
+import { disabledButtonSave, renderLoading} from "./utils";
 import {editAvatarProfile, editInfoProfile, getInfoProfile, getInitialCards} from "./Api";
 import Api from "./Api";
 import Card from './card';
@@ -51,7 +55,7 @@ const card = new Card(
         .catch(err => console.error(err));
     },
 
-     showCard: (popupName, popupLink) => {
+    showCard: (popupName, popupLink) => {
       popupHeading.textContent = popupName;
       popupImage.src = popupLink;
       popupImage.alt = popupName;
@@ -60,7 +64,8 @@ const card = new Card(
 
   }
 )
-export function addCard(container, cardElement)  {
+
+function addCard(container, cardElement)  {
   container.prepend(cardElement);
 }  
 
@@ -70,8 +75,8 @@ cardForm.addEventListener('submit', function (evt) {
   const cardName = cardForm.name.value;
   const cardPic = cardForm.link.value;
   api.addNewCards(cardName, cardPic)
-    .then((card) => {
-      addCard(elementContainer, createCard(cardName, cardPic, card._id, false, 0));
+    .then((newCard) => {
+      addCard(elementContainer, card.createCard(cardName, cardPic, newCard._id, false, 0));
       cardForm.reset();
       disabledButtonSave(pipiSaveButtom)
       closePopup(popupCard);
@@ -90,10 +95,12 @@ Promise.all([api.getInfoProfile(), api.getInitialCards()])
     profProfile.textContent = userData.about;
     profileAvatar.src = userData.avatar;
     profileAvatar.alt = `Аватар ${userData.name}`;
-    cards.forEach(card => {
-      const initialCards = createCard(card.name, card.link, card._id, card.likes.some(item => item._id === userId), card.likes.length);
+    cards.forEach(oldCard => {
+      const initialCards = card.createCard(oldCard.name, oldCard.link, oldCard._id, 
+                                           oldCard.likes.some(item => item._id === userId), 
+                                           oldCard.likes.length);
       const cardRemoveButton = initialCards.querySelector('.pipi__remove');
-      if (card.owner._id !== userId) {
+      if (oldCard.owner._id !== userId) {
         cardRemoveButton.remove();
       };
       addCard(cardContainer, initialCards);
