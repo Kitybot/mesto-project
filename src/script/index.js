@@ -1,12 +1,14 @@
 import '../pages/index.css';
 import { enableValidation} from "./validations.js";
-import { popupProfile, editButton, addButton, profileInput, profInput, profileform, nameProfile, profProfile, popupCard,validationSettings, avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, profileSaveButtom, profilecontainet ,cardContainer} from "./constants";
+import { popupProfile,  editButton, addButton, profileInput, profInput, profileform, nameProfile, profProfile, popupCard,validationSettings, avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, profileSaveButtom, profilecontainet ,cardContainer, popupPic} from "./constants";
 import {  openPopup, closePopup } from "./modal.js";
-import { addEventListener, createCard, addCard} from "./card.js";
+//import { addEventListener, createCard, addCard} from "./card.js";
 import { disabledButtonSave, renderLoading } from "./utils";
 import {editAvatarProfile, editInfoProfile, getInfoProfile, getInitialCards} from "./Api";
 import Api from "./Api";
 import Card from './card';
+const popupImage = document.querySelector(".popup__image");
+const popupHeading = document.querySelector(".popup__heading");
 enableValidation(validationSettings);
 
 let userId;
@@ -43,14 +45,42 @@ const card = new Card(
 
     deleteCard: (cardId, cardElement) => {
       api.deleteCard(cardId)
-        .then(responseCheckWithNoData => {
+        .then(() => {
           cardElement.remove();
-          console.log(responseCheckWithNoData);
         })
         .catch(err => console.error(err));
+    },
+
+     showCard: (popupName, popupLink) => {
+      popupHeading.textContent = popupName;
+      popupImage.src = popupLink;
+      popupImage.alt = popupName;
+      openPopup(popupPic);
     }
+
   }
 )
+export function addCard(container, cardElement)  {
+  container.prepend(cardElement);
+}  
+
+cardForm.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  renderLoading(true, cardForm);
+  const cardName = cardForm.name.value;
+  const cardPic = cardForm.link.value;
+  api.addNewCards(cardName, cardPic)
+    .then((card) => {
+      addCard(elementContainer, createCard(cardName, cardPic, card._id, false, 0));
+      cardForm.reset();
+      disabledButtonSave(pipiSaveButtom)
+      closePopup(popupCard);
+    })
+    .catch(err => console.error(err))
+    .finally(() => {
+      renderLoading(false, cardForm);
+    });
+});
 
 
 Promise.all([api.getInfoProfile(), api.getInitialCards()])
