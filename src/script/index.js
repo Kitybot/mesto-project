@@ -80,9 +80,21 @@ cardForm.addEventListener('submit', function (evt) {
   renderLoading(true, cardForm);
   const cardName = cardForm.name.value;
   const cardPic = cardForm.link.value;
+  
   api.addNewCards(cardName, cardPic)
     .then((newCard) => {
-      addCard(elementContainer, card.createCard(cardName, cardPic, newCard._id, false, 0));
+      const cardElem = new Section (
+        {
+          items: [newCard],
+          renderer: (newCard) => {
+            const initialCard = card.createCard(newCard.name, newCard.link, newCard._id, 
+                                                 false, newCard.likes.length);
+            cardElem.addItem(initialCard);
+          },
+        },
+        '.element__container'
+      );
+      cardElem.rendererItem();
       cardForm.reset();
       disabledButtonSave(pipiSaveButtom)
       closePopup(popupCard);
@@ -92,7 +104,6 @@ cardForm.addEventListener('submit', function (evt) {
       renderLoading(false, cardForm);
     });
 });
-
 
 formList.forEach((formSelector) => {
       formSelector.addEventListener('submit', function (evt) {
@@ -108,21 +119,30 @@ Promise.all([api.getInfoProfile(), api.getInitialCards()])
     profProfile.textContent = userData.about;
     profileAvatar.src = userData.avatar;
     profileAvatar.alt = `Аватар ${userData.name}`;
-    cards.forEach(oldCard => {
-      const initialCards = card.createCard(oldCard.name, oldCard.link, oldCard._id, 
-                                           oldCard.likes.some(item => item._id === userId), 
-                                           oldCard.likes.length);
-      const cardRemoveButton = initialCards.querySelector('.pipi__remove');
-      if (oldCard.owner._id !== userId) {
-        cardRemoveButton.remove();
-      };
-      addCard(cardContainer, initialCards);
-    })
+
+    const cardList = new Section (
+      {
+        items: cards,
+        renderer: (oldCard) => {
+          const initialCard = card.createCard(oldCard.name, oldCard.link, oldCard._id, 
+                                               oldCard.likes.some(item => item._id === userId), 
+                                               oldCard.likes.length);
+          const cardRemoveButton = initialCard.querySelector('.pipi__remove');
+          if (oldCard.owner._id !== userId) {
+          cardRemoveButton.remove();
+          };
+          cardList.addItem(initialCard);
+        },
+      },
+      '.element__container'
+    );
+    cardList.rendererItem();
+
   })
   .catch(err => {console.error(err)});
 
 
- function handleSubmitProfileForm() {
+function handleSubmitProfileForm() {
   renderLoading(true, profileform);
   api.editInfoProfile(profileInput, profInput)
     .then(res => {
