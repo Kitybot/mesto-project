@@ -9,6 +9,7 @@ import { disabledButtonSave, renderLoading} from "./utils";
 import Api from "./Api";
 import Card from './Card';
 import FormValidator from './FormValidator';
+import Section from './Section';
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
 
