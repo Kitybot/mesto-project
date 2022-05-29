@@ -71,9 +71,21 @@ profileFormValidator.enableValidation();
 const cardValidator = new FormValidator (validationSettings, formList[2]);
 cardValidator.enableValidation();
 
-function addCard(container, cardElement)  {
-  container.prepend(cardElement);
-}  
+const addCards = new Section (
+  {
+    renderer: (cardData) => {
+      const initialCard = card.createCard(cardData.name, cardData.link, cardData._id, 
+                                           cardData.likes.some(item => item._id === userId), 
+                                           cardData.likes.length);
+      const cardRemoveButton = initialCard.querySelector('.pipi__remove');
+      if (cardData.owner._id !== userId) {
+      cardRemoveButton.remove();
+      };
+      addCards.addItem(initialCard);
+    },
+  },
+  '.element__container'
+);
 
 cardForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
@@ -83,18 +95,9 @@ cardForm.addEventListener('submit', function (evt) {
   
   api.addNewCards(cardName, cardPic)
     .then((newCard) => {
-      const cardElem = new Section (
-        {
-          items: [newCard],
-          renderer: (newCard) => {
-            const initialCard = card.createCard(newCard.name, newCard.link, newCard._id, 
-                                                 false, newCard.likes.length);
-            cardElem.addItem(initialCard);
-          },
-        },
-        '.element__container'
-      );
-      cardElem.rendererItem();
+      const initialCard = card.createCard(newCard.name, newCard.link, newCard._id, 
+                                          false, newCard.likes.length);
+      addCards.addItem(initialCard);
       cardForm.reset();
       disabledButtonSave(pipiSaveButtom)
       closePopup(popupCard);
@@ -119,25 +122,7 @@ Promise.all([api.getInfoProfile(), api.getInitialCards()])
     profProfile.textContent = userData.about;
     profileAvatar.src = userData.avatar;
     profileAvatar.alt = `Аватар ${userData.name}`;
-
-    const cardList = new Section (
-      {
-        items: cards,
-        renderer: (oldCard) => {
-          const initialCard = card.createCard(oldCard.name, oldCard.link, oldCard._id, 
-                                               oldCard.likes.some(item => item._id === userId), 
-                                               oldCard.likes.length);
-          const cardRemoveButton = initialCard.querySelector('.pipi__remove');
-          if (oldCard.owner._id !== userId) {
-          cardRemoveButton.remove();
-          };
-          cardList.addItem(initialCard);
-        },
-      },
-      '.element__container'
-    );
-    cardList.rendererItem();
-
+    addCards.rendererItem(cards);
   })
   .catch(err => {console.error(err)});
 
