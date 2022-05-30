@@ -3,15 +3,15 @@ import { popupProfile,  editButton, addButton, profileInput, profInput,
          profileform, nameProfile, profProfile, popupCard, validationSettings, 
          avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, 
          profileSaveButtom, profilecontainet ,cardContainer, popupPic, 
-         elementContainer, cardForm, pipiSaveButtom} from "./constants";
-import { disabledButtonSave, renderLoading} from "./utils";
-import Api from "./Api";
-import Card from './Card';
-import FormValidator from './FormValidator';
-import Section from './Section';
-import PopupWithImage from './PopupWithImage';
-import PopupWithForm from './PopupWithForm';
-import UserInfo from './UserInfo';
+         elementContainer, cardForm, pipiSaveButtom} from "./utils/constants";
+import { disabledButtonSave, renderLoading} from "./utils/utils";
+import Api from "./components/Api";
+import Card from './components/Card';
+import FormValidator from './components/FormValidator';
+import Section from './components/Section';
+import PopupWithImage from './components/PopupWithImage';
+import PopupWithForm from './components/PopupWithForm';
+import UserInfo from './components/UserInfo';
 
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
