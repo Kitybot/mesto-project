@@ -11,6 +11,7 @@ import FormValidator from './FormValidator';
 import Section from './Section';
 import PopupWithImage from './PopupWithImage';
 import PopupWithForm from './PopupWithForm';
+import UserInfo from './UserInfo';
 
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
@@ -24,6 +25,11 @@ export const api = new Api({
     'Content-Type': 'application/json'
   }
 }); 
+
+const userProfile = new UserInfo({
+  nameProfileSelector: nameProfile,
+  profProfileSelector: profProfile,
+});
 
 const card = new Card(
   {
@@ -56,12 +62,8 @@ const card = new Card(
     },
 
     showCard: (popupName, popupLink) => {
-      /*popupHeading.textContent = popupName;
-      popupImage.src = popupLink;
-      popupImage.alt = popupName;*/
       popupWithImage.openPopup(popupName, popupLink);
     }
-
   }
 )
 
@@ -96,8 +98,8 @@ const popupProfileForm = new PopupWithForm (
     renderLoading(true, profileform);
     api.editInfoProfile(inputValues)
     .then(res => {
-      nameProfile.textContent = res.name;
-      profProfile.textContent = res.about;
+      userProfile.getUserInfo(res);
+      userProfile.setUserInfo();
       disabledButtonSave(profileSaveButtom);
       popupProfileForm.closePopup();
     })
@@ -108,7 +110,6 @@ const popupProfileForm = new PopupWithForm (
   }
 );
 popupProfileForm.setEventListeners();
-
 
 const popupAvatarForm = new PopupWithForm (
   modalAvatar,
@@ -127,7 +128,6 @@ const popupAvatarForm = new PopupWithForm (
   }
 );
 popupAvatarForm.setEventListeners();
-
 
 const popupCardForm = new PopupWithForm(
   popupCard,
@@ -152,8 +152,8 @@ popupCardForm.setEventListeners();
 Promise.all([api.getInfoProfile(), api.getInitialCards()])
   .then(([userData, cards]) => {
     userId = userData._id;
-    nameProfile.textContent = userData.name;
-    profProfile.textContent = userData.about;
+    userProfile.getUserInfo(userData);
+    userProfile.setUserInfo();
     profileAvatar.src = userData.avatar;
     profileAvatar.alt = `Аватар ${userData.name}`;
     addCards.rendererItem(cards);
@@ -161,8 +161,8 @@ Promise.all([api.getInfoProfile(), api.getInitialCards()])
   .catch(err => {console.error(err)});
 
 function fillProfileInputs() {
-  profileInput.value = nameProfile.textContent;
-  profInput.value = profProfile.textContent;
+  profileInput.value = userProfile.profile.name;
+  profInput.value = userProfile.profile.prof;
 }
 
 editButton.addEventListener('click', () => {

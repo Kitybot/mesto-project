@@ -7,8 +7,8 @@ export const popupPic = document.querySelector('.popup__picture');
 export const modalAvatar = document.querySelector('.popup__avatar');
 export const closeButtonPic = document.querySelector('#close_Pic');
 
-export const nameProfile = document.querySelector('.profile__title');
-export const profProfile = document.querySelector('.profile__subtitle');
+export const nameProfile = 'profile__title';
+export const profProfile = 'profile__subtitle';
 
 
 export const elementContainer = content.querySelector('.element__container');
