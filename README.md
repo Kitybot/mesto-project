@@ -31,3 +31,8 @@
 пользователе, о лайках и т.д.), а также редактирование и удаление данной информации.
 
 * [Ссылка на сайт в готовом виде](https://kitybot.github.io/mesto-project/)
+
+
+Работа выполнялась в колаборации с BobrikAU:
+e-mail: kirbob0@yandex.ru
+GitHub: https://github.com/BobrikAU
