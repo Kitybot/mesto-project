@@ -4,12 +4,13 @@ import { popupProfile,  editButton, addButton, profileInput, profInput,
          avatarForm, avatarInput, modalAvatar, avatarSaveform, profileAvatar, 
          profileSaveButtom, profilecontainet ,cardContainer, popupPic, 
          elementContainer, cardForm, pipiSaveButtom} from "./constants";
-import {  openPopup, closePopup } from "./modal.js";
 import { disabledButtonSave, renderLoading} from "./utils";
 import Api from "./Api";
 import Card from './Card';
 import FormValidator from './FormValidator';
 import Section from './Section';
+import PopupWithForm from './PopupWithForm';
+
 const popupImage = document.querySelector(".popup__image");
 const popupHeading = document.querySelector(".popup__heading");
 
@@ -64,12 +65,10 @@ const card = new Card(
 )
 
 const formList = Array.from(document.querySelectorAll(validationSettings.formSelector));
-const avatrFormValidator  = new FormValidator (validationSettings, formList[0]);
-avatrFormValidator.enableValidation();
-const profileFormValidator = new FormValidator (validationSettings, formList[1]);
-profileFormValidator.enableValidation();
-const cardValidator = new FormValidator (validationSettings, formList[2]);
-cardValidator.enableValidation();
+formList.forEach(item => {
+  const validatorOfForm = new FormValidator (validationSettings, item);
+  validatorOfForm.enableValidation();
+})
 
 const addCards = new Section (
   {
@@ -87,33 +86,64 @@ const addCards = new Section (
   '.element__container'
 );
 
-cardForm.addEventListener('submit', function (evt) {
-  evt.preventDefault();
-  renderLoading(true, cardForm);
-  const cardName = cardForm.name.value;
-  const cardPic = cardForm.link.value;
-  
-  api.addNewCards(cardName, cardPic)
-    .then((newCard) => {
-      const initialCard = card.createCard(newCard.name, newCard.link, newCard._id, 
-                                          false, newCard.likes.length);
-      addCards.addItem(initialCard);
-      cardForm.reset();
-      disabledButtonSave(pipiSaveButtom)
-      closePopup(popupCard);
+const popupProfileForm = new PopupWithForm (
+  popupProfile,
+  function submitForm(inputValues) {
+    renderLoading(true, profileform);
+    api.editInfoProfile(inputValues)
+    .then(res => {
+      nameProfile.textContent = res.name;
+      profProfile.textContent = res.about;
+      disabledButtonSave(profileSaveButtom);
+      popupProfileForm.closePopup();
     })
-    .catch(err => console.error(err))
+    .catch(err => {console.error(err)})
     .finally(() => {
-      renderLoading(false, cardForm);
+      renderLoading(false, profileform);
     });
-});
+  }
+);
+popupProfileForm.setEventListeners();
 
-formList.forEach((formSelector) => {
-      formSelector.addEventListener('submit', function (evt) {
-        evt.preventDefault();
-      });
+
+const popupAvatarForm = new PopupWithForm (
+  modalAvatar,
+  function submitForm(inputValues) {
+    renderLoading(true, avatarForm);
+    api.editAvatarProfile(inputValues)
+    .then(res => {
+      profileAvatar.src = res.avatar;
+      disabledButtonSave(avatarSaveform);
+      popupAvatarForm.closePopup();
     })
+      .catch(err => {console.error(err)})
+      .finally(() => {
+        renderLoading(false, avatarForm);
+      });
+  }
+);
+popupAvatarForm.setEventListeners();
 
+
+const popupCardForm = new PopupWithForm(
+  popupCard,
+  function submitForm(inputValues) {
+    renderLoading(true, cardForm);
+    api.addNewCards(inputValues)
+      .then((newCard) => {
+        const initialCard = card.createCard(newCard.name, newCard.link, newCard._id, 
+                                            false, newCard.likes.length);
+        addCards.addItem(initialCard);
+        disabledButtonSave(pipiSaveButtom)
+        popupCardForm.closePopup();
+      })
+      .catch(err => console.error(err))
+      .finally(() => {
+        renderLoading(false, cardForm);
+      });
+  }
+)
+popupCardForm.setEventListeners();
 
 Promise.all([api.getInfoProfile(), api.getInitialCards()])
   .then(([userData, cards]) => {
@@ -126,37 +156,6 @@ Promise.all([api.getInfoProfile(), api.getInitialCards()])
   })
   .catch(err => {console.error(err)});
 
-
-function handleSubmitProfileForm() {
-  renderLoading(true, profileform);
-  api.editInfoProfile(profileInput, profInput)
-    .then(res => {
-      nameProfile.textContent = res.name;
-      profProfile.textContent = res.about;
-      disabledButtonSave(profileSaveButtom);
-      closePopup(popupProfile);
-    })
-    .catch(err => {console.error(err)})
-    .finally(() => {
-      renderLoading(false, profileform);
-    });
-}
- function editAvatarPic() {
-  const avatarLink = avatarInput.value;
-  renderLoading(true, avatarForm);
-  api.editAvatarProfile(avatarLink)
-  .then(res => {
-    profileAvatar.src = res.avatar;
-    disabledButtonSave(avatarSaveform);
-    avatarForm.reset();
-    closePopup(modalAvatar);
-  })
-    .catch(err => {console.error(err)})
-    .finally(() => {
-      renderLoading(false, avatarForm);
-    });
-};
-
 function fillProfileInputs() {
   profileInput.value = nameProfile.textContent;
   profInput.value = profProfile.textContent;
@@ -164,20 +163,13 @@ function fillProfileInputs() {
 
 editButton.addEventListener('click', () => {
   fillProfileInputs();
-  openPopup(popupProfile);
+  popupProfileForm.openPopup();
 });
 
-profileform.addEventListener('submit', handleSubmitProfileForm);
 addButton.addEventListener('click', () => {
-  openPopup(popupCard);
+  popupCardForm.openPopup();
 });
 
 profilecontainet.addEventListener('click', () => {
-  openPopup(modalAvatar);
+  popupAvatarForm.openPopup();
 });
-
-avatarForm.addEventListener('submit', function (evt) {
-  evt.preventDefault();
-  editAvatarPic();
-});
-

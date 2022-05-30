@@ -26,35 +26,35 @@ export default class Api {
     }
   }
 
-  editInfoProfile (nameProfile, profProfile) {
+  editInfoProfile ({name: nameProfile, about: profProfile}) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       body: JSON.stringify({
-        name: nameProfile.value,
-        about: profProfile.value
+        "name": nameProfile,
+        "about": profProfile
       }),
       headers: this._headers
     })
     .then(this._checkResponse)
   };
   
-  editAvatarProfile (avatarLink) {
+  editAvatarProfile ({link: avatarLink}) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       body: JSON.stringify({
-        avatar: avatarLink
+        "avatar": avatarLink
       }),
       headers: this._headers
     })
     .then(this._checkResponse)
   };
 
-  addNewCards (name, link) {
+  addNewCards ({name, link}) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       body: JSON.stringify({
-        name: name,
-        link: link
+        "name": name,
+        "link": link
       }),
       headers: this._headers
     })
@@ -104,10 +104,10 @@ export default class Api {
 
 
 
-export const deleteLikeCard = (cardid) => {
+/*export const deleteLikeCard = (cardid) => {
   return fetch(`${URl}/cards/likes/${cardid}`, {
     method: 'DELETE',
     headers: config.headers
   })
   .then(checkResponse)
-};
+};*/
