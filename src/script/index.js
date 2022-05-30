@@ -9,6 +9,7 @@ import Api from "./Api";
 import Card from './Card';
 import FormValidator from './FormValidator';
 import Section from './Section';
+import PopupWithImage from './PopupWithImage';
 import PopupWithForm from './PopupWithForm';
 
 const popupImage = document.querySelector(".popup__image");
@@ -55,10 +56,10 @@ const card = new Card(
     },
 
     showCard: (popupName, popupLink) => {
-      popupHeading.textContent = popupName;
+      /*popupHeading.textContent = popupName;
       popupImage.src = popupLink;
-      popupImage.alt = popupName;
-      openPopup(popupPic);
+      popupImage.alt = popupName;*/
+      popupWithImage.openPopup(popupName, popupLink);
     }
 
   }
@@ -85,6 +86,8 @@ const addCards = new Section (
   },
   '.element__container'
 );
+
+const popupWithImage = new PopupWithImage(popupPic);
 
 const popupProfileForm = new PopupWithForm (
   popupProfile,

@@ -10,13 +10,14 @@ export default class Popup{
     this._popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', this._handleEscape);
   }
-  _handleEscape(evt) {
+  _handleEscape = (evt) => {
     if (evt.key === "Escape") {
       this.closePopup();
     }
   }
   setEventListeners(){ 
     this._popup.addEventListener('mousedown', (evt) => {
+      debugger
       if (evt.target.classList.contains('popup_opened')) {
         this.closePopup()
       }
