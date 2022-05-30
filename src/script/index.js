@@ -88,6 +88,7 @@ const addCards = new Section (
 );
 
 const popupWithImage = new PopupWithImage(popupPic);
+popupWithImage.setEventListeners();
 
 const popupProfileForm = new PopupWithForm (
   popupProfile,
