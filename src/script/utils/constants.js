@@ -41,7 +41,7 @@ export const profileSaveButtom = profileform.querySelector('.profile-button-save
 
 
 export const avatarForm = document.getElementById('edit_avatar');
-export const profileAvatar = document.querySelector('.profile__avatar');
+export const profileAvatar = '.profile__avatar';
 export const avatarSaveform = avatarForm.querySelector('.button-save-avatar');
 export const avatarInput = document.getElementById('link-avatar_pic');
 
