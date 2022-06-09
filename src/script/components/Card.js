@@ -1,39 +1,71 @@
 export default class Card {
 
-  constructor({selector, clickLikeButton, deleteCard, showCard}) {
-    this._selector = selector;
+  constructor({selector, cardData, isLiked, clickLikeButton, deleteCard, showCard}) {
+    this._newCard = document.querySelector(`#${selector}`).content.querySelector('.pipi').cloneNode(true);
+    this._cardImage = this._newCard.querySelector('.pipi__image');
+    this._cardLikeButton = this._newCard.querySelector('#like_pipi');
+    this._cardLikeCount = this._newCard.querySelector('.pipi__count-like');
+    this._cardButtonRemove = this._newCard.querySelector('.pipi__remove');
+    this._cardTitle = this._newCard.querySelector('.pipi__title');
+    this._isLiked = isLiked;
+    this._cardData = cardData;    
     this._clickLikeButton = clickLikeButton;
     this._deleteCard = deleteCard;
     this._showCard = showCard;
   } 
   
-  _setEventListener(cardLikeButton, cardLikeCount, cardId, cardElement, cardButtonRemove, 
-                    cardImage, name, link) {
-    cardLikeButton.addEventListener('click', () => {
-      this._clickLikeButton(cardLikeButton, cardLikeCount, cardId);
+  _setEventListener() {
+    this._cardLikeButton.addEventListener('click', () => {
+      this._clickLikeButton(this);
     });
-    cardButtonRemove.addEventListener('click', () => {
-      this._deleteCard(cardId, cardElement);      
+    this._cardButtonRemove.addEventListener('click', () => {
+      this._deleteCard(this);      
     });
-    cardImage.addEventListener('click', () => {
-      this._showCard(name, link);
+    this._cardImage.addEventListener('click', () => {
+      this._showCard(this._cardData);
     });
   }
 
-  createCard(name, link, cardId, isLiked, likesCount) {
-    const cardElement = document.querySelector(`#${this._selector}`).content.querySelector('.pipi').cloneNode(true);
-    const cardImage = cardElement.querySelector('.pipi__image');
-    const cardLikeButton = cardElement.querySelector('#like_pipi');
-    const cardLikeCount = cardElement.querySelector('.pipi__count-like');
-    const cardButtonRemove = cardElement.querySelector('.pipi__remove');
-    cardElement.querySelector('.pipi__title').textContent = name;
-    cardImage.src = link;
-    cardImage.alt = name;
-    cardLikeCount.textContent = likesCount;
-    if (isLiked) cardLikeButton.classList.add('pipi__button_live');
-    this._setEventListener(cardLikeButton, cardLikeCount, cardId, cardElement, 
-                           cardButtonRemove, cardImage, name, link);
-    return cardElement;
+  getRemoveButton() {
+    return this._cardButtonRemove;
+  }
+
+  getCard() {
+    return this._newCard;
+  }
+
+  getIsLiked() {
+    return this._isLiked;
+  }
+
+  getCardId() {
+    return this._cardData._id;
+  }
+
+  _schowNumberLikes() {
+    this._cardLikeCount.textContent = this._cardData.likes.length;
+  }
+
+
+  _saveNewData(cardData) {
+    this._cardData = cardData;
+    this._isLiked = !this._isLiked;
+  }
+
+  changeLike(cardData) {
+    this._saveNewData(cardData);
+    this._schowNumberLikes();
+    this._cardLikeButton.classList.toggle('pipi__button_live');
+  }
+  
+  createCard() {
+    this._cardTitle.textContent = this._cardData.name;
+    this._cardImage.src = this._cardData.link;
+    this._cardImage.alt = this._cardData.name;
+    this._schowNumberLikes();
+    if (this._isLiked) this._cardLikeButton.classList.add('pipi__button_live');
+    this._setEventListener();
+    return this._newCard;
   }
   
 }
