@@ -5,23 +5,36 @@ export default class PopupWithForm extends Popup {
   constructor(popup, submitForm) {
     super(popup);
     this._popupForm = this._popup.querySelector('.popup__form');
+    this._formElements = Array.from(this._popupForm.querySelectorAll('.popup__item'));
+    this._formButton = this._popupForm.querySelector('.button');
     this._submitForm = submitForm;
   }
 
   _getInputValues() {
     const inputValues = {};
-    const formElements = Array.from(this._popupForm.elements);
-    formElements.forEach(item => {
-      if (item.name !== '') {
-        inputValues[item.name] = item.value;
-      }
+    this._formElements.forEach(item => {        
+      inputValues[item.name] = item.value;
     });
     return inputValues;
+  }
+
+  setInputValues(data) {
+    this._formElements.forEach(item => {
+      item.value = data[item.name];
+    })
   }
 
   _handleSubmitProfileForm = (evt) => {
     evt.preventDefault();
     this._submitForm(this._getInputValues());
+  }
+
+  renderLoading(isLoading) {
+    if (isLoading) {
+      this._formButton.textContent = 'Сохраняем...';
+    } else {
+      this._formButton.textContent = 'Сохранить';
+    }
   }
 
   setEventListeners() {
