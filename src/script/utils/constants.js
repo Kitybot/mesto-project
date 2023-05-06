@@ -7,8 +7,8 @@ export const popupPic = document.querySelector('.popup__picture');
 export const modalAvatar = document.querySelector('.popup__avatar');
 export const closeButtonPic = document.querySelector('#close_Pic');
 
-export const nameProfile = document.querySelector('.profile__title');
-export const profProfile = document.querySelector('.profile__subtitle');
+export const nameProfile = 'profile__title';
+export const profProfile = 'profile__subtitle';
 
 
 export const elementContainer = content.querySelector('.element__container');
@@ -41,7 +41,7 @@ export const profileSaveButtom = profileform.querySelector('.profile-button-save
 
 
 export const avatarForm = document.getElementById('edit_avatar');
-export const profileAvatar = document.querySelector('.profile__avatar');
+export const profileAvatar = '.profile__avatar';
 export const avatarSaveform = avatarForm.querySelector('.button-save-avatar');
 export const avatarInput = document.getElementById('link-avatar_pic');
 
